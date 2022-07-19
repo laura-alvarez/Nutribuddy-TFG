@@ -1,0 +1,125 @@
+﻿
+
+.label {
+    width: 100%;
+}
+
+.inputProfile {
+    width: 100%;
+    max-width: none;
+}
+
+.contentForm {
+    border-top: solid 3px #33363a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 22rem;
+    padding: 2rem;
+    width: 100%;
+}
+h1, h4{  
+    color: #33363a;
+    font-weight: 600;
+}
+
+hr {
+    border: 1px solid rgb(51 54 58 / 71%);
+    width: 60%;
+}
+
+.formBlock {
+    display: flex;   
+    justify-content: space-between;    
+    width: 50%;
+}
+
+    .formBlock div input[type=checkbox] {
+        width: auto;
+        accent-color: #f2233a;
+    }
+
+.formBlock div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin: 0.75rem;
+}
+
+.formBlock div label {
+    font-weight: 800;
+    color: #33363a;
+}
+
+.formBlock div input {
+    width: 100%;
+    max-width:none;
+    color: #33363a;
+    font-size: smaller;
+}
+
+    .formBlock div select {
+        width: 100%;
+        max-width: none;
+    }
+
+.formBlock div textarea {
+    max-width: none;
+    min-height: 15vh;
+    width: 100%;
+}
+
+.fBtn {
+    border: solid 2px;
+    border-radius: 5px;
+    padding: 0.25rem 1rem;
+    font-weight: 800;
+    margin: 0.5rem;
+}
+
+.fBtn_cancel {
+    border-color: #f2233a;
+    color: #f2233a;
+    background: white;
+}
+
+.fBtn_cancel:hover {
+    border-color: #fc9d3c;
+    color: #fc9d3c;
+    background: white;
+}
+
+.fBtn_conf {
+    border-color: #f2233a;
+    color: #ffffff;
+    background: #f2233a;
+}
+
+.fBtn_conf:hover {
+    border-color: #fc9d3c;
+    color: white;
+    background: #fc9d3c;
+}
+
+.div_Btn_Outside {
+    display: flex;
+    justify-content: space-around;
+}
+
+.div_Btn_Inside {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-content: flex-start;
+    width: 10%;
+}
+
+.selection{
+    width:100% !important;
+}

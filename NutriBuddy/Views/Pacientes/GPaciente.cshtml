@@ -1,0 +1,135 @@
+﻿
+@using NutriBuddy.Resources;
+@using System;
+@using NutriBuddy.Models;
+@using NutriBuddy.Models.Propios;
+@{
+    Layout = "~/Views/Shared/_LayoutPZ.cshtml";
+    var localizaciones = ViewData["localizaciones"] as Dictionary<string, List<ProvinciaBasica>>;
+    var IDPaciente = int.Parse(ViewData["idPaciente"].ToString());
+    var pacienteF = ViewData["paciente"] as PacienteF;
+
+
+}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+<link rel="stylesheet" href="~/Content/Styles/Formularios.css">
+
+<script src="~/Scripts/nutribuddy/Utilidades.js"></script>
+<script src="~/Scripts/nutribuddy/Validadores.js"></script>
+<script src="~/Scripts/nutribuddy/GPacientes.js"></script>
+
+
+<div class="contentForm" style="border:none">
+    <h1 class="formTitle" style=" border-bottom: solid 2px #33363a; width: 100%; text-align: center; margin-bottom: 40px;">@resource.paciente_titulo</h1>
+
+    <div class="login" style="margin-bottom: 40px; width: 100%;">
+
+        <form id="login" method="get" action="javascript:guardarPaciente()">
+            <input type="text" class="inputProfile hidden" id="ID"  value="@IDPaciente" disabled>
+            <label class="label">
+                <b>
+                    @trabajadores.form_Name
+                </b>
+            </label>
+
+            <input type="text" class="inputProfile" id="Nombre" placeholder="@trabajadores.form_Name" value="@(IDPaciente > 0 ? pacienteF.Nombre : "")">
+            <br><br>
+
+            <label class="label">
+                <b>
+                    @trabajadores.form_Surname
+                </b>
+            </label>
+            <input type="text" class="inputProfile" id="Apellidos" placeholder="@trabajadores.form_Surname" value="@(IDPaciente > 0 ? pacienteF.Apellidos : "")">
+            <br><br>
+
+            <label class="label">
+                <b>
+                    @trabajadores.form_Email
+                </b>
+            </label>
+            <input type="text" class="inputProfile" id="Email" placeholder="@trabajadores.form_Email" value="@(IDPaciente > 0 ? pacienteF.Email : "")">
+
+            <hr style="width: 100%;" />
+
+            <label class="label">
+                <b>
+                    @trabajadores.form_DNI
+                </b>
+            </label>
+            <input type="text" class="inputProfile" id="Dni" placeholder="@trabajadores.form_DNI" value="@(IDPaciente > 0 ? pacienteF.DNI : "")">
+            <br><br>
+
+            <label class="label">
+                <b>
+                    @trabajadores.form_address
+                </b>
+            </label>
+            <input type="text" class="inputProfile" id="Direccion" placeholder="@trabajadores.form_address" value="@(IDPaciente > 0 ? pacienteF.Direccion : "")">
+            <br><br>
+
+            <label class="label">
+                <b>
+                    @trabajadores.form_State
+                </b>
+            </label>
+
+
+            <select class="inputProfile" id="Provincia">
+                <option value="-1">--</option>
+                @{
+                    foreach (KeyValuePair<string, List<ProvinciaBasica>> loc in localizaciones)
+                    {
+                        <optgroup label="@loc.Key">
+                            @{
+                                foreach (ProvinciaBasica prov in loc.Value)
+                                {
+                                    <option value="@prov.ID"  @(IDPaciente > 0 && pacienteF.IDProvincia == prov.ID? "selected" : "")>@prov.Nombre</option>
+                                }
+                            }
+                        </optgroup>
+                    }
+                }
+            </select>
+
+            <br><br>
+
+            <label class="label">
+                <b>
+                    @trabajadores.form_Phone
+                </b>
+            </label>
+            <input type="text" class="inputProfile" id="Telefono" placeholder="@trabajadores.form_Phone" value="@(IDPaciente > 0 ? pacienteF.Telefono : "")">
+            <br><br>
+
+            <label class="label">
+                <b>
+                    @resource.birthday
+                </b>
+            </label>
+            <input type="date" class="inputProfile" id="FechaNacimiento" max="@DateTime.Today.ToString("yyyy-MM-dd")" value="@(IDPaciente > 0 ? pacienteF.FNacimiento.ToString("yyyy-MM-dd") : "")">
+            <br><br>
+            <label class="label"><b>@paciente.pz_sex</b></label>
+            <div class="formBlock">
+                <label>
+                    <img src="~/Content/Img/man.png">
+                    <input type="radio" name="gender" value="masculino" checked class="radioButton" style="accent-color:red" @(IDPaciente > 0 && pacienteF.EsHombre? "checked" : "")>
+                    <span>@paciente.p_sex_11</span>
+                </label>
+
+                <label style="margin-left:1em">
+                    <img src="~/Content/Img/woman.png">
+                    <input type="radio" name="gender" value="femenino" class="radioButton" style="accent-color:red"  @(IDPaciente > 0 && !pacienteF.EsHombre? "checked" : "")>
+                    <span>@paciente.p_sex_12</span>
+                </label>
+            </div>
+            <div class="div_Btn_Outside">
+                <div class="div_Btn_Inside">
+                    <button id="volverListado" class="fBtn fBtn_cancel">@forms.form_btn_cancel</button>
+                    <button id="guardarTrabajador" class="fBtn fBtn_conf">@forms.form_btn_save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

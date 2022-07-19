@@ -1,0 +1,99 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    background-image: url('/Content/Img/bg_Veggies.jpg');
+    background-repeat: repeat;
+    color: #34373a;
+}
+
+.hidden{
+    display:none !important;
+}
+
+.contentForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;   
+    width: 100%;
+}
+
+
+.formBlock {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.formBlockV {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+}
+
+.fBtn {
+    border: solid 2px;
+    border-radius: 5px;
+    padding: 0.25rem 1rem;
+    font-weight: 800;
+    margin: 0.5rem;
+    cursor:pointer;
+}
+
+.fBtn_cancel {
+    border-color: #f2233a;
+    color: #f2233a;
+    background: white;
+    cursor: pointer;
+}
+
+    .fBtn_cancel:hover {
+        border-color: #fc9d3c;
+        color: #fc9d3c;
+        background: white;
+    }
+
+.fBtn_conf {
+    border-color: #f2233a;
+    color: #ffffff;
+    background: #f2233a;
+    cursor: pointer;
+}
+
+    .fBtn_conf:hover {
+        border-color: #fc9d3c;
+        color: white;
+        background: #fc9d3c;
+    }
+
+.imageSeparador{
+    margin-left:0.5em;
+}
+
+.labelIForm{
+    font-weight:600;
+    font-size:larger;
+    margin-bottom:0.5em;
+}
+
+.inputYear {
+    width: 50%;
+    padding: 1%;
+    font-family: 'Nunito', 'sans-serif';
+    border: solid 2px #9fdc5d;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.genderR {
+    accent-color: #f2233a;
+}
+
+.subLabel{
+    font-size: initial !important;
+}

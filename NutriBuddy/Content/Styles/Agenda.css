@@ -1,0 +1,94 @@
+﻿.spanText {
+    font-size: larger;
+    margin-right: 0.75rem;
+}
+
+
+.selectTrabajador {
+    z-index: 800;
+    position: absolute;
+    background: #fff;
+    height: 33px;
+    overflow: hidden;
+    width: 30%;
+    outline: none;
+}
+/*CALENDARIO*/
+#calendar {
+    margin-top: 2rem;
+}
+
+#calendar div table thead {
+    background: #9fdc5d;
+}
+
+/*SOBREESCRIBIENDO LOS ESTILOS PREDETERMINADOS DE FULLCALENDAR*/
+.fc .fc-button-primary {
+    color: #33363a !important;
+    background-color: #9fdc5d !important;
+    border-color: #9fdc5d !important;
+    font-weight: 600 !important;
+}
+
+.fc .fc-button-primary:hover {
+    color: #212529 !important;
+    background-color: #f8dc7f !important;
+    border-color: #f8dc7f !important;
+}
+
+    .fc .fc-button-primary:disabled {
+        color: #33363a !important;
+        background-color: #d5dc72 !important;
+        border-color: #d5dc72 !important;
+    }
+
+    .fc .fc-button-primary:disabled:hover {
+        color: #33363a !important;
+        background-color: #d5dc72 !important;
+        border-color: #d5dc72 !important;
+    }
+
+.fc .fc-daygrid-day.fc-day-today {
+    background: linear-gradient(0deg, rgba(159,220,93,1) 0%, rgba(159,220,93,1) 35%, rgba(252,220,129,1) 100%);
+}
+
+.fc .fc-toolbar-title {
+    font-size: 2.5em !important;
+    margin: 0;
+    color: #33363a !important;
+    font-weight: 800 !important;
+}
+
+
+
+.anydirCitaDiv {
+    color: #33363a;
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+/*ESTILOS PARA MODAL*/
+.modal-header h4 {
+    font-weight: 800;
+    color: #33363a;
+}
+
+#anyadirCitaBody div {
+    margin: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+    #anyadirCitaBody div label {
+        margin-right: 1%;
+        text-align: right;
+        width: 32%;
+    }
+
+#anyadirCitaBody div select,
+#anyadirCitaBody div input,
+#anyadirCitaBody div textarea
+{
+    width: 24vh;
+}

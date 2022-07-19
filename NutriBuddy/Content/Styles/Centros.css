@@ -1,0 +1,129 @@
+﻿#divPrincipal {
+    margin: 3rem 12rem;
+    padding: 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#buscador {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+#buscador div label {
+    font-family: 'Nunito',serif;
+    font-size: larger;
+    font-weight: 600;
+}
+
+#buscador div select {
+    margin: 0 2rem 0 0;
+}
+
+#centros {
+    margin: 3rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#noCentros {
+    font-weight: 600 !important;
+    color: #ff9f3c;
+}
+
+.centroCard {
+    width: 30%;
+    border: solid 3px #33363a;
+    background: linear-gradient(180deg, rgba(159,220,93,1) 0%, rgba(159,220,93,1) 35%, rgba(252,220,129,1) 100%);
+    border-radius: 25px;
+    box-shadow: 3px 3px 3px 0px #34373a;
+    margin: 1rem;
+    padding: 1rem;
+    height: 35vh;
+}
+
+.avatarCard {
+    width: 100%;
+}
+
+.centroCard div hr {
+    margin-top: 0;
+    border-color: #33363a;
+    border-top: 2px solid;
+}
+
+.divNombreCentro {
+    font-size: larger;
+    font-weight: 800;
+}
+
+.divInfoCentro {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.divAvatarCentro {
+    padding: 0.5rem;
+    width: 40%;
+}
+
+.divInfoC {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 1rem;
+}
+
+.labelProvincia{
+    font-weight:800;
+}
+
+/*PARTE INTERNAL DE GESTIÓN DE CENTROS*/
+
+.containerNB {
+    width: 100%;
+}
+
+#cabecera {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#titulo {
+    font-family: 'Nunito', serif;
+    font-weight: 600;
+}
+
+#anyadirCentro {
+    background: #9fdc5d;
+    border-color: #9fdc5d;
+    color: #33363a;
+    border-radius: 5px;
+    font-family: 'Nunito',serif;
+    font-weight: 600;
+    padding: 0.5rem;
+}
+
+    #anyadirCentro:hover {
+        background: #33363a;
+        border-color: #33363a;
+        color: #fff;
+    }
+

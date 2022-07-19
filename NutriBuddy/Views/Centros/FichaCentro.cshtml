@@ -1,0 +1,131 @@
+﻿@using NutriBuddy.Resources;
+@using NutriBuddy.Models;
+@{
+    Layout = "~/Views/Shared/_LayoutPZ.cshtml";
+    var localizaciones = ViewData["localizaciones"] as Dictionary<string, List<ProvinciaBasica>>;
+    var planes = ViewData["planes"] as List<NutriBuddy.Models.Propios.Planes>;
+    var IDCentro = int.Parse(ViewData["idCentro"].ToString());
+    CentroForm centro = null;
+    if (IDCentro>0) { centro = ViewData["Centro"] as CentroForm; }
+
+}
+
+<link rel="stylesheet" href="~/Content/Styles/Formularios.css">
+<script src="~/Scripts/nutribuddy/Validadores.js"></script>
+<script src="~/Scripts/nutribuddy/Centros.js"></script>
+
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%;">
+    <h1 class="formTitle">@centros.newCenter</h1>
+    <input id="idCentro" type="text" class="hidden" value="@IDCentro" disabled />
+    <div class="contentForm">
+        <div class="formBlock">
+            <div>
+                <label>@centros.form_Name*:</label>
+                <input id="nombre" type="text" value="@(IDCentro>0?centro.Nombre:"")" required />
+            </div>
+            <div>
+                <label>@centros.form_CIF*:</label>
+                <input id="CIF" type="text" value="@(IDCentro>0?centro.CIF:"")" required />
+            </div>
+        </div>
+        <div class="formBlock">
+            <div>
+                <label>@centros.form_Description:</label>
+                <textarea id="descripcion">@(IDCentro>0?centro.Descripcion:"")</textarea>
+            </div>
+        </div>
+        <div class="formBlock">
+            <div>
+                <label>@centros.form_Plan*:</label>
+                <select id="plan">
+                    <option value="-1">--</option>
+                    @{
+                        foreach (NutriBuddy.Models.Propios.Planes p in planes)
+                        {
+                            <option value="@p.ID" @(IDCentro > 0 && centro.IDPlan == p.ID ? "selected" : "")>@p.Nombre</option>
+                        }
+                    }
+
+                </select>
+            </div>
+            <div>
+                <label>@centros.form_maxWorkers:</label>
+                <input id="maxTrabajadores" type="number" step="1" min="1" value="@(IDCentro>0?centro.MaxTrabajadores:1)" disabled />
+            </div>
+            <div>
+                <label>@centros.form_currentWorkers:</label>
+                <input id="trabajadoresActuales" type="number" step="1" min="1" value="@(IDCentro>0?centro.TrabajadoresActuales:1)"  disabled />
+            </div>
+        </div>
+        <div class="formBlock">
+            <div>
+                <label>@centros.form_Address:</label>
+                <input type="text" id="direccion" value="@(IDCentro>0?centro.Direccion:"")" />
+            </div>
+        </div>
+        <div class="formBlock">
+            <div>
+                <label>@centros.form_State</label>
+                <select id="provincia">
+                    <option value="-1">--</option>
+                    @{
+                        foreach (KeyValuePair<string, List<ProvinciaBasica>> loc in localizaciones)
+                        {
+                            <optgroup label="@loc.Key">
+                                @{
+                                    foreach (ProvinciaBasica prov in loc.Value)
+                                    {
+                                        <option value="@prov.ID" @(IDCentro > 0 && centro.IDProvincia == prov.ID ? "selected" : "")>@prov.Nombre</option>
+                                    }
+                                }
+                            </optgroup>
+                        }
+                    }
+                </select>
+            </div>
+            <div>
+                <label>@centros.form_Location:</label>
+                <input id="localidad" type="text" value="@(IDCentro>0?centro.Localidad:"")" />
+            </div>
+        </div>
+        <div class="formBlock">
+            <div>
+                <label>@centros.form_PC:</label>
+                <input id="cp" type="text" value="@(IDCentro>0?centro.CP:"")" />
+            </div>
+            <div>
+                <label>@centros.form_Phone:</label>
+                <input id="telefono" type="tel" value="@(IDCentro>0?centro.Telefono:"")" />
+            </div>
+        </div>
+        <div class="formBlock">
+            <div>
+                <label>@centros.form_Email:</label>
+                <input type="text" id="centroEmail" value="@(IDCentro>0?centro.Email:"")" />
+            </div>
+        </div>
+        <div class="formBlock">
+            <div>
+                <label>@centros.form_Website:</label>
+                <input type="text" id="website" value="@(IDCentro>0?centro.Website:"")" />
+            </div>
+        </div>
+        <div class="formBlock">
+            <div style=" align-content: flex-start;">
+                <label>@centros.form_Consultation:</label>
+                <label style="font-weight: 400;"><input type="checkbox" id="presencial" @(IDCentro > 0 && centro.Consultation_F2F ? "checked" : "") />@centros.form_F2F</label>
+                <label style="font-weight: 400;"><input type="checkbox" id="online" @(IDCentro > 0 && centro.Consultation_Online ? "checked" : "") /> @centros.form_Online</label>
+            </div>
+        </div>
+        <hr />
+        <h4>@centros.form_Director</h4>
+        @Html.Partial("~/Views/Personal/Form_TC.cshtml")
+    </div>
+    <div class="div_Btn_Outside">
+        <div class="div_Btn_Inside">
+            <button id="volverListado" class="fBtn fBtn_cancel">@forms.form_btn_cancel</button>
+            <button id="guardarCentro" class="fBtn fBtn_conf">@forms.form_btn_save</button>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,185 @@
+﻿@using System;
+@using NutriBuddy.Resources;
+@using NutriBuddy.Models.Propios;
+
+@{
+    Layout = null;
+    var IDPaciente = ViewData["IDPaciente"];    
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+    <link href="~/Content/Styles/Login.css" rel="stylesheet" />
+    <link href="~/Content/Styles/FormInicial.css" rel="stylesheet" />
+
+    <!--AUTONUMERIC-->
+    <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0"></script>
+    <script>var maxYear = @(DateTime.Now.Year - 5);</script>
+    <script src="~/Scripts/nutribuddy/Paciente.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;600;900&display=swap" rel="stylesheet">
+
+    <!--SWEETALERT-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="loginLogo">
+            <img src="/Content/Img/Logo/LogoNutriBuddyVertical.png">
+        </div>
+        <div class="login">
+
+            <h1 class="formTitle">@paciente.p_TitleInicial</h1>
+            <input id="idPaciente" type="text" class="hidden" value="@IDPaciente" disabled />
+            <div id="formInicial_1" class="contentForm">
+                <div class="formBlock">
+                    <div>
+                        <h3>@paciente.p_Inicial_Msg1:</h3>
+                        <button id="btnStart" class="fBtn fBtn_conf btnNext">@paciente.p_Btn_Start</button>
+                    </div>
+                </div>
+            </div>
+            <div id="formInicial_2" class="contentForm hidden">
+                <div class="formBlock" style="margin-bottom: 4%;">
+                    <div style=" display: flex; flex-direction: column;">
+                        <label class="labelIForm">@paciente.p_basic_1</label>
+                        <label>
+                            <input class="genderR" type="radio" name="objetivoP" value="1" checked>
+                            @paciente.p_basic_11
+                        </label>
+                        <label>
+                            <input class="genderR" type="radio" name="objetivoP" value="2">
+                            @paciente.p_basic_12
+                        </label>
+                        <label>
+                            <input class="genderR" type="radio" name="objetivoP" value="3">
+                            @paciente.p_basic_13
+                        </label>
+                    </div>
+                </div>
+                <div class="formBlockV" style="margin-bottom: 4%;">
+                    <label class="labelIForm">@paciente.p_basic_2</label>
+                    <label>
+                        <input class="genderR" type="radio" name="estiloV" value="1" checked>
+                        @paciente.p_basic_21
+                    </label>
+                    <label>
+                        <input class="genderR" type="radio" name="estiloV" value="0">
+                        @paciente.p_basic_22
+                    </label>
+                </div>
+                <div class="div_Btn_Outside">
+                    <div class="div_Btn_Inside">
+                        <button class="fBtn fBtn_cancel btnBack">@paciente.p_Btb_Back</button>
+                        <button class="fBtn fBtn_conf btnNext">@paciente.p_Btn_Next</button>
+                    </div>
+                </div>
+            </div>
+            <div id="formInicial_3" class="contentForm hidden">
+                <div class="formBlockV" style="margin-bottom: 4%;">
+                    <label class="labelIForm">@paciente.p_basic_3</label>
+                    <label>
+                        <input class="genderR" type="radio" name="AEstres" value="1" checked>
+                        @paciente.p_basic_31
+                    </label>
+                    <label>
+                        <input class="genderR" type="radio" name="AEstres" value="0">
+                        @paciente.p_basic_32
+                    </label>
+                </div>
+                <div class="formBlockV" style="margin-bottom: 4%;">
+                    <label class="labelIForm"> @paciente.p_basic_4</label>
+                    <label>
+                        <input class="genderR" type="radio" name="autoestima" value="1" checked>
+                        @paciente.p_basic_31
+                    </label>
+                    <label>
+                        <input class="genderR" type="radio" name="autoestima" value="0">
+                        @paciente.p_basic_32
+                    </label>
+                </div>
+                <div class="div_Btn_Outside">
+                    <div class="div_Btn_Inside">
+                        <button class="fBtn fBtn_cancel btnBack">@paciente.p_Btb_Back</button>
+                        <button class="fBtn fBtn_conf btnNext">@paciente.p_Btn_Next</button>
+                    </div>
+                </div>
+            </div>
+            <div id="formInicial_4" class="contentForm hidden">
+                <h3 style=" margin-top: 0;">@paciente.p_Inicial_Msg3</h3>
+                <div class="formBlockV" style="margin-bottom: 4%;">
+                    <label class="labelIForm">@paciente.p_measure_1:</label>
+                    <input id="altura" type="text" value="0" class="inputYear" />
+                </div>
+                <div class="formBlockV" style="margin-bottom: 4%;">
+                    <label class="labelIForm">@paciente.p_measure_2:</label>
+                    <input id="peso" type="text" value="0" class="inputYear" />
+                </div>
+                <h5 id="imc" style=" width: 100%; margin-top: -10px;">@paciente.p_measure_3: </h5>
+                <div class="formBlock" style="margin-bottom: 4%;">
+                    <div>
+                        <label class="labelIForm">@paciente.p_measure_4:</label>
+                        <div class="formBlock">
+                            <div class="formBlockV" style="margin-bottom: 4%;">
+                                <label class="labelIForm subLabel">@paciente.p_measure_41:</label>
+                                <input id="mPecho" type="text" value="0" class="inputYear" />
+                            </div>
+                            <div class="formBlockV" style="margin-bottom: 4%;">
+                                <label class="labelIForm subLabel">@paciente.p_measure_42:</label>
+                                <input id="mCintura" type="text" value="0" class="inputYear" />
+                            </div>
+                            <div class="formBlockV" style="margin-bottom: 4%;">
+                                <label class="labelIForm subLabel">@paciente.p_measure_43:</label>
+                                <input id="mCadera" type="text" value="0" class="inputYear" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="formBlock" style="margin-bottom: 4%; ">
+                    <div>
+                        <label class="labelIForm">@paciente.p_measure_5:</label>
+                        <div class="formBlock">
+                            <div class="formBlockV" style="margin-bottom: 4%;">
+                                <label class="labelIForm subLabel">@paciente.p_measure_51:</label>
+                                <input id="pGrasa" type="text" value="0" class="inputYear" />
+                            </div>
+                            <div class="formBlockV" style="margin-bottom: 4%;">
+                                <label class="labelIForm subLabel">@paciente.p_measure_52:</label>
+                                <input id="pMagro" type="text" value="0" class="inputYear" />
+                            </div>
+                            <div class="formBlockV" style="margin-bottom: 4%;">
+                                <label class="labelIForm subLabel">@paciente.p_measure_53:</label>
+                                <input id="pAgua" type="text" value="0" class="inputYear" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="div_Btn_Outside">
+                    <div class="div_Btn_Inside">
+                        <button class="fBtn fBtn_cancel btnBack">@paciente.p_Btb_Back</button>
+                        <button class="fBtn fBtn_conf btnNext">@paciente.p_Btn_Next</button>
+                    </div>
+                </div>
+            </div>
+            <div id="formInicial_5" class="contentForm hidden">
+                <div class="formBlock" style="text-align: center;">
+                    <div>
+                        <h3>@paciente.p_Inicial_Msg2</h3>
+                        <img src="~/Content/Img/success1.png" style="width:100%" />
+                        <button id="btnEnd" class="fBtn fBtn_conf">@paciente.p_Btn_End</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

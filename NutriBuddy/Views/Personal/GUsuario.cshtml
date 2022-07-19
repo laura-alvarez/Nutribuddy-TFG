@@ -1,0 +1,29 @@
+﻿@using NutriBuddy.Resources;
+@using System;
+@using NutriBuddy.Models;
+@{
+    Layout = "~/Views/Shared/_LayoutPZ.cshtml";
+    var esDeNB = ViewData["esDeNB"] as Boolean?;
+    var idWorker = int.Parse(ViewData["idTrabajador"].ToString());    
+}
+
+<script src="~/Scripts/nutribuddy/Validadores.js"></script>
+<link rel="stylesheet" href="~/Content/Styles/Formularios.css">
+<div style="width: 100%; display: flex; flex-direction: column; align-content: center; align-items: center; justify-content: flex-start;">
+    <h1 class="formTitle">@trabajadores.cabecera_trabajador</h1>
+    <input id="idTrabajador" type="text" class="hidden" value="@idWorker" disabled />
+    @if (esDeNB != null && esDeNB == true)
+    {
+        @Html.Partial("~/Views/Personal/Form_TNB.cshtml");
+    }
+    else
+    {
+        @Html.Partial("~/Views/Personal/Form_TC.cshtml");
+    }   
+    <div class="div_Btn_Outside">
+        <div class="div_Btn_Inside">
+            <button id="volverListado" class="fBtn fBtn_cancel">@forms.form_btn_cancel</button>
+            <button id="guardarTrabajador" class="fBtn fBtn_conf">@forms.form_btn_save</button>
+        </div>
+    </div>
+</div>

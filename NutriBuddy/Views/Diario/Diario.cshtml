@@ -1,0 +1,267 @@
+﻿@using NutriBuddy.Resources;
+@using NutriBuddy.Models.Propios;
+@{
+    var idioma = Session["idioma"].ToString();
+    Layout = "~/Views/Shared/_LayoutPZ.cshtml";
+    var emociones = ViewData["emociones"] as List<Basico>;
+    var deportes = ViewData["deportes"] as List<Basico>;
+    var esHombre = Boolean.Parse(ViewData["esHombre"].ToString());
+    var tiposR = ViewData["tipo"] as List<Basico>;
+}
+
+<script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0"></script>
+
+<link href="~/Content/Styles/Diario.css" rel="stylesheet" />
+<link href="~/Content/Fullcalendar/main.css" rel="stylesheet" />
+<script src="~/Content/Fullcalendar/main.js"></script>
+<script src="~/Content/Fullcalendar/locales/es.js"></script>
+<script src="~/Scripts/nutribuddy/Diario.js"></script>
+
+<div style="width:100%">
+    <h4>@diario.diario_1</h4>
+    <p>@diario.diario_2</p>
+    <div id="calendario"></div>
+</div>
+
+<div id="calendarModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title"></h4>
+            </div>
+            <div id="modalBody" class="modal-body"> </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="diarioModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle2" class="modal-title"></h4>
+                <i class="fa-solid fa-xmark modalCloseBtn" data-dismiss="modal"></i>
+            </div>
+            <div id="anyadirCitaBody" class="modal-body">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="heading1" style="background:white; border:none">
+                            <h5 class="mb-0">
+                                <button class="btn tituloTarjeta" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                    <i class="fa-solid fa-utensils"></i> @diario.menu_alimentacion
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordion">
+                            <div class="card-body">
+                                <span style="font-size:small">@diario.comida_nota</span>
+                                <button id="anyadirComida" class="btnCard"><i class="fa-solid fa-plus" style="margin-right:5px"></i>@diario.anyadir_comida</button>
+                                <div id="cardComidas">
+                                    <p id="NoComida">@diario.no_comida</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading2">
+                            <h5 class="mb-0">
+                                <button class="btn tituloTarjeta collapsed" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    <i class="fa-solid fa-weight-scale"></i> @diario.menu_medidas
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="formBlockV" style="margin-bottom: 4%;">
+                                    <label class="labelIForm">@paciente.p_measure_1:</label>
+                                    <input id="altura" type="text" value="0" class="medida" />
+                                </div>
+                                <div class="formBlockV" style="margin-bottom: 4%;">
+                                    <label class="labelIForm">@paciente.p_measure_2:</label>
+                                    <input id="peso" type="text" value="0" class="medida" />
+                                </div>
+                                <p id="imc" style="font-size: smaller; width: 100%; margin-top: -10px;">@paciente.p_measure_3 <span id="IMCData">35</span> </p>
+                                <div class="formBlock" style="margin-bottom: 4%;">
+                                    <div>
+                                        <label class="labelIForm">@paciente.p_measure_4:</label>
+                                        <div class="formBlock">
+                                            <div class="formBlockV" style="margin-bottom: 4%;">
+                                                <label class="labelIForm subLabel">@paciente.p_measure_41:</label>
+                                                <input id="mPecho" type="text" value="0" class="medida" />
+                                            </div>
+                                            <div class="formBlockV" style="margin-bottom: 4%;">
+                                                <label class="labelIForm subLabel">@paciente.p_measure_42:</label>
+                                                <input id="mCintura" type="text" value="0" class="medida" />
+                                            </div>
+                                            <div class="formBlockV" style="margin-bottom: 4%;">
+                                                <label class="labelIForm subLabel">@paciente.p_measure_43:</label>
+                                                <input id="mCadera" type="text" value="0" class="medida" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formBlock" style="margin-bottom: 4%; ">
+                                    <div>
+                                        <label class="labelIForm">@paciente.p_measure_5:</label>
+                                        <div class="formBlock">
+                                            <div class="formBlockV" style="margin-bottom: 4%;">
+                                                <label class="labelIForm subLabel">@paciente.p_measure_51:</label>
+                                                <input id="pGrasa" type="text" value="0" class="medida" />
+                                            </div>
+                                            <div class="formBlockV" style="margin-bottom: 4%;">
+                                                <label class="labelIForm subLabel">@paciente.p_measure_52:</label>
+                                                <input id="pMagro" type="text" value="0" class="medida" />
+                                            </div>
+                                            <div class="formBlockV" style="margin-bottom: 4%;">
+                                                <label class="labelIForm subLabel">@paciente.p_measure_53:</label>
+                                                <input id="pAgua" type="text" value="0" class="medida" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading3">
+                            <h5 class="mb-0">
+                                <button class="btn tituloTarjeta collapsed" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                    <i class="fa-solid fa-heart-pulse"></i> @diario.menu_salud
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="formSalud">
+                                    <div>
+                                        <label>@diario.salud_1</label>
+                                        <div style="accent-color: #f2233a; font-size:smaller; ">
+                                            @foreach (var r in tiposR)
+                                            {
+                                                <label>
+                                                    <input class="genderR" type="radio" name="estado" value="@r.ID">
+                                                    @(idioma == "en"?r.NombreEN:r.Nombre)
+                                                </label>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label style="width: 100%;" ">@diario.salud_2</label>
+                                        <label style="font-size:smaller">@diario.salud_3</label>
+
+                                        <div class="emocionesDiv">
+                                            @foreach (Basico emocion in emociones)
+                                            {
+                                                <label>
+                                                    <input class="genderR" type="checkbox" name="emocion" value="@emocion.ID">
+                                                    @if (idioma == "en")
+                                                    {
+                                                        <img src="~/Content/Img/Emociones/@emocion.Nombre" title="@emocion.NombreEN" style="width: 40px;" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="~/Content/Img/Emociones/@emocion.NombreEN" title="@emocion.Nombre" style="width: 40px;" />
+                                                    }
+                                                </label>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; align-items: stretch;">
+                                        <label>@diario.salud_4</label>
+                                        <input id="agua" type="text" style=" width: 20%; margin: 0 3%;" />
+                                    </div>
+                                    <div>
+                                        <label>@diario.salud_5</label>
+                                        <div style="accent-color: #f2233a; font-size: smaller; ">
+                                            @foreach (var r in tiposR)
+                                            {
+                                                <label>
+                                                    <input class="genderR" type="radio" name="suenyo" value="@r.ID">
+                                                    @(idioma == "en"?r.NombreEN:r.Nombre)
+                                                </label>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; align-items: stretch;">
+                                        <label>@diario.salud_6</label>
+                                        <textarea id="medicamentos" style=" width: 55%; margin: 0 3%;"></textarea>
+                                    </div>
+                                    @if (!esHombre)
+                                    {
+                                        <div style="display: flex; flex-direction: column; align-items: stretch;">
+                                            <label>@diario.salud_7</label>
+                                            <div style="accent-color: #f2233a; font-size: smaller;">
+                                                <label>
+                                                    <input class="genderR" type="radio" name="menstruacion" value="1">
+                                                    @diario.salud_71
+                                                </label>
+                                                <label>
+                                                    <input class="genderR" type="radio" name="menstruacion" value="0" checked>
+                                                    @diario.salud_72
+                                                </label>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading4">
+                            <h5 class="mb-0">
+                                <button class="btn tituloTarjeta collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                    <i class="fa-solid fa-person-running"></i> @diario.menu_deporte
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
+                            <div class="card-body">
+                                <div style="display: flex; flex-direction: column; align-items: stretch; width:100%">
+                                    <label>@diario.deporte_1</label>
+                                    <div style="accent-color: #f2233a; ">
+                                        <label>
+                                            <input class="genderR" type="radio" name="deporte" value="1">
+                                            @diario.salud_71
+                                        </label>
+                                        <label>
+                                            <input class="genderR" type="radio" name="deporte" value="0" checked>
+                                            @diario.salud_72
+                                        </label>
+                                    </div>
+                                    <div id="deportesDiv" class="hidden">
+                                        <label>@diario.deporte_2</label>
+                                        <div id="depListado">
+                                            @foreach (Basico dep in deportes)
+                                            {
+                                                <label class="deporteItem">
+                                                    <input class="genderR" type="checkbox" name="deporteT" value="@dep.ID">
+                                                    @if (idioma == "en")
+                                                    {
+                                                        <img src="~/Content/Img/Deportes/@dep.Nombre" title="@dep.NombreEN" style="width: 48px;" @(dep.ID == 16 ? "class=hidden" : "") /><span>@dep.NombreEN</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="~/Content/Img/Deportes/@dep.NombreEN" title="@dep.Nombre" style="width: 48px;" @(dep.ID == 16 ? "class=hidden" : "") /><span>@dep.Nombre</span>
+                                                    }
+                                                </label>
+                                            }
+                                        </div>
+                                        <label>@diario.deporte_3</label>
+                                        <textarea id="depObservaciones" style="width:100%"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="guardarDiario" class="btnNB"><i class="fa-solid fa-floppy-disk" style="margin-right:5px"></i>@diario.guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

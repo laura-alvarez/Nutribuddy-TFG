@@ -1,0 +1,33 @@
+﻿.containerNB {
+    width: 100%;
+}
+
+#cabecera {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#titulo {
+    font-family: 'Nunito', serif;
+    font-weight: 600;
+}
+
+#anyadirProfesional {
+    background: #9fdc5d;
+    border-color: #9fdc5d;
+    color: #33363a;
+    border-radius: 5px;
+    font-family: 'Nunito',serif;
+    font-weight: 600;
+    padding: 0.5rem;
+}
+
+    #anyadirProfesional:hover {
+        background: #33363a;
+        border-color: #33363a;
+        color: #fff;
+    }
+
+

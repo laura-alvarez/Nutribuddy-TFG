@@ -1,0 +1,46 @@
+﻿@using NutriBuddy.Resources;
+@using NutriBuddy.Models;
+@{
+    Layout = "~/Views/Shared/_LayoutPZ.cshtml";
+    Usuario usuario = Session["usuario"] as Usuario;
+}
+<!--DATATABLE -->
+<link rel="stylesheet" href="~/Scripts/Datatable/datatables.min.css" />
+<link rel="stylesheet" href="~/Scripts/Datatable/responsive.dataTables.min.css" />
+<script type="text/javascript" src="~/Scripts/Datatable/datatables.min.js"></script>
+<script type="text/javascript" src="~/Scripts/Datatable/responsive.dataTables.min.js"></script>
+
+<link rel="stylesheet" href="~/Content/Styles/Tabla.css" />
+<link rel="stylesheet" href="~/Content/Styles/Personal.css" />
+
+<script type="text/javascript" src="~/Scripts/nutribuddy/TablaNB.js"></script>
+<script type="text/javascript" src="~/Scripts/nutribuddy/Personal.js"></script>
+
+<div class="containerNB">
+    <div id="cabecera">
+        @if (usuario.IDRol == 1)
+        {
+            <h4 id="titulo">@trabajadores.personal_msg_TNB</h4>
+        }
+        else
+        {
+    <h4 id="titulo">@trabajadores.personal_msg_TC</h4>
+        }
+        <button id="anyadirProfesional"><i class="fa-solid fa-user-plus"></i> Añadir personal</button>
+    </div>
+    <div id="divTabla">
+        <table id="tablaPersonal" class="table table-striped table-hover tablaDT">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>@trabajadores.form_Name</th>
+                    <th>@trabajadores.form_Surname</th>
+                    <th>@trabajadores.form_State</th>
+                    <th>@trabajadores.form_Email</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>

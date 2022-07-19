@@ -1,0 +1,82 @@
+﻿@using System;
+@using NutriBuddy.Models;
+@{
+    var localizaciones = ViewData["localizaciones"] as Dictionary<string, List<ProvinciaBasica>>;
+    var puestos = ViewData["puestos"] as List<NutriBuddy.Models.Propios.Puesto>;
+    var centros = ViewData["centros"] as List<CentroPropio>;
+    var buscadores = ViewData["buscadores"] as List<int>;   
+ }
+<link href="~/Content/Styles/Centros.css" rel="stylesheet">
+
+<div id="divPrincipal">
+    <div id="buscador">
+        <div>
+            <label>Tipo de atención:</label>
+            <select id="buscador_tipo">
+                <option value="-1" @(buscadores[0] == -1 ? " selected" : "")>--</option>
+                <option value="1" @(buscadores[0] == 1 ? " selected" : "")>Presencial</option>
+                <option value="2" @(buscadores[0] == 2 ? " selected" : "")>Online</option>
+            </select>
+        </div>
+        <div>
+            <label>Busco un:</label>
+            <select id="buscador_especilidades">
+              <option value="-1" @(buscadores[1] == -1 ? " selected" : "")>--</option>
+           
+                @{
+                    foreach (var p in puestos)
+                    {
+                            <option value="@p.IDPuesto" @(buscadores[1] == p.IDPuesto ? " selected" : "")>@p.Nombre</option> 
+                    }
+                }
+            </select>
+        </div>
+        <div>
+            <label>Situado en:</label>
+            <select id="buscador_localizacion">
+                <option value="-1" @(buscadores[2] == -1 ? " selected" : "")>--</option>
+                @{
+                    foreach (KeyValuePair<string, List<ProvinciaBasica>> loc in localizaciones)
+                    {
+                        <optgroup label="@loc.Key">
+                            @{
+                                foreach (ProvinciaBasica prov in loc.Value)
+                                {
+                                    <option value="@prov.ID" @(buscadores[2] == prov.ID ? " selected" : "")>@prov.Nombre</option>
+                                }
+                            }
+                        </optgroup>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div id="centros">
+        @if (centros.Count == 0)
+        {
+            @Html.Partial("~/Views/Shared/_NotFound.cshtml");
+                    }
+                    else
+                    {
+                        var i = 0;
+                        foreach (CentroPropio c in centros)
+                        {
+                <div id = "centro@(i)" class="centroCard">
+                    <div id="divNombreCentro@(i)" class="divNombreCentro">
+                        <label>@c.Nombre</label>
+                        <hr />
+                     </div>
+                    <div class="divInfoCentro">
+                        <div id="infoCentro@(i)" class="divInfoC">
+                            <label id="provinciaCentro@(i)" class="labelProvincia">@c.Provincia</label>
+                            <label id="direccionCentro@(i)"><i class="fa-solid fa-location-dot"></i>@c.Direccion</label>
+                            <label id="telefonoCentro@(i)"><i class="fa-solid fa-square-phone"></i>@c.Telefono</label>
+                        </div>
+                     </div>
+                </div>
+                i++;
+            }
+
+        }     
+    </div>
+</div>

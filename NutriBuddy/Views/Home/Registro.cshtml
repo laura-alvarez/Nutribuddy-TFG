@@ -1,0 +1,205 @@
+﻿@using NutriBuddy.Resources
+@using NutriBuddy.Models
+@{
+    Layout = null;
+    var localizaciones = ViewData["localizaciones"] as Dictionary<string, List<ProvinciaBasica>>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+    <link href="~/Content/Styles/Login.css" rel="stylesheet" />
+    <script>
+    </script>
+    <script src="~/Scripts/nutribuddy/Validadores.js"></script>
+    <script src="~/Scripts/nutribuddy/Registro.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;600;900&display=swap" rel="stylesheet">
+    <style>
+        .formBlock {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+    </style>
+    <!--SWEETALERT-->
+    @*<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>*@
+    <script src="~/Scripts/SweetAlert/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="~/Scripts/SweetAlert/sweetalert2.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="loginLogo">
+            <img src="/Content/Img/Logo/LogoNutriBuddyVertical.png">
+        </div>
+        <div class="login" style="margin-bottom: 100px;">
+
+            <form id="login" method="get" action="javascript:registrar()">
+                <label>
+                    <b>
+                        @trabajadores.form_Name
+                    </b>
+                </label>
+                <input type="text" class="Pass" id="Nombre" placeholder="@trabajadores.form_Name">
+                <br><br>
+
+                <label>
+                    <b>
+                        @trabajadores.form_Surname
+                    </b>
+                </label>
+                <input type="text" class="Pass" id="Apellidos" placeholder="@trabajadores.form_Surname">
+                <br><br>
+
+                <label>
+                    <b>
+                        @trabajadores.form_Email
+                    </b>
+                </label>
+                <input type="text" class="Pass" id="Email" placeholder="@trabajadores.form_Email">
+                <br><br>
+
+                <label>
+                    <b>
+                        @resource.login_pass
+                    </b>
+                </label>
+                <input type="Password" name="Pass" id="Contrasenya" class="Pass" placeholder="@resource.login_pass">
+                <label id="showPassword"><input type="checkbox" /> @resource.login_seePass</label><br />
+
+                <hr />
+
+                <label>
+                    <b>
+                        @trabajadores.form_DNI
+                    </b>
+                </label>
+                <input type="text" class="Pass" id="Dni" placeholder="@trabajadores.form_DNI">
+                <br><br>
+
+                <label>
+                    <b>
+                        @trabajadores.form_address
+                    </b>
+                </label>
+                <input type="text" class="Pass" id="Direccion" placeholder="@trabajadores.form_address">
+                <br><br>
+
+                <label>
+                    <b>
+                        @trabajadores.form_State
+                    </b>
+                </label>
+                <select class="Pass" style="width: 100%;" id="Provincia">
+                    <option value="-1">--</option>
+                    @{
+                        foreach (KeyValuePair<string, List<ProvinciaBasica>> loc in localizaciones)
+                        {
+                            <optgroup label="@loc.Key">
+                                @{
+                                    foreach (ProvinciaBasica prov in loc.Value)
+                                    {
+                                        <option value="@prov.ID">@prov.Nombre</option>
+                                    }
+                                }
+                            </optgroup>
+                        }
+                    }
+                </select>
+
+                <br><br>
+
+                <label>
+                    <b>
+                        @trabajadores.form_Phone
+                    </b>
+                </label>
+                <input type="text" class="Pass" id="Telefono" placeholder="@trabajadores.form_Phone">
+                <br><br>
+
+                <label>
+                    <b>
+                        @resource.birthday
+                    </b>
+                </label>
+                <input type="date" class="Pass" id="FechaNacimiento">
+                <br><br>
+                <label class="labelIForm"><b>@paciente.p_sex_1</b></label>
+                <div class="formBlock">
+                    <label>
+                        <img src="~/Content/Img/man.png">
+                        <input type="radio" name="gender" value="masculino" checked class="radioButton">
+                        <span>@paciente.p_sex_11</span>
+                    </label>
+
+                    <label style="margin-left:1em">
+                        <img src="~/Content/Img/woman.png">
+                        <input type="radio" name="gender" value="femenino" class="radioButton">
+                        <span>@paciente.p_sex_12</span>
+                    </label>
+                </div>
+                <hr />
+                <label class="labelIForm"><b>@centros.associated_center</b></label>
+                <div style="margin-top: 5px;">
+                    <label>
+                        <input type="radio" name="centroAsociado" value="no" checked class="radioButton">
+                        <span>@resource.no</span>
+                    </label>
+
+                    <label style="margin-left:1em">
+                        <input type="radio" name="centroAsociado" value="si" class="radioButton">
+                        <span>@resource.yes</span>
+                    </label>
+                </div>
+                <br />
+                <div id="divCentroAsociado" class="hidden">
+                    <label>
+                        <b>
+                            @centros.center_state
+                        </b>
+                    </label>
+                    <select class="Pass" style="width: 488px !important;" id="CentrosProvincia">
+                        <option value="-1">--</option>
+                        @{
+                            foreach (KeyValuePair<string, List<ProvinciaBasica>> loc in localizaciones)
+                            {
+                                <optgroup label="@loc.Key">
+                                    @{
+                                        foreach (ProvinciaBasica prov in loc.Value)
+                                        {
+                                            <option value="@prov.ID">@prov.Nombre</option>
+                                        }
+                                    }
+                                </optgroup>
+                            }
+                        }
+                    </select>
+                    <div id="divSelectorCentros" class="hidden">
+                        <br />
+                        <label>
+                            <b>
+                                @centros.Centros
+                            </b>
+                        </label>
+                        <select class="Pass" style="width: 488px !important;" id="SelectorCentro"></select>
+                    </div>
+                </div>
+                <br><br>
+                <center>
+                    <button class="btnNB logBtn " type="submit" id="btnRegistrar" style="width: 30%; padding-left: 25px; padding-right: 25px; height: 40px; margin: auto;">@resource.sign_in</button>
+                </center>
+                <br />
+                <center>
+                    <button class="btnNB secBtn" type="button" id="btnVolver" style="width: 30%; padding-left: 25px; padding-right: 25px; height: 40px; margin: auto;">@resource.recP_ComeBack</button>
+                </center>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

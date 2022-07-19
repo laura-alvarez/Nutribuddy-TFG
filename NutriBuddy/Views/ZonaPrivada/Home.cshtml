@@ -1,0 +1,20 @@
+﻿@using NutriBuddy.Models;
+@{
+    Layout = "~/Views/Shared/_LayoutPZ.cshtml";
+    Usuario usuario = Session["usuario"] as Usuario;
+}
+
+<link href="~/Content/Styles/PZHome.css" rel="stylesheet">
+<div style=" display: flex; flex-direction: column; align-content: center; width: 100% !important;">
+    <h2 style="font-size: xx-large; font-weight: 800">Bienvenido a su zona privada</h2>
+
+    @switch (usuario.IDRol)
+    {
+        case 5:
+            Html.RenderPartial("~/Views/ZonaPrivada/_PZPaciente.cshtml");
+            break;
+    }
+
+
+</div>
+

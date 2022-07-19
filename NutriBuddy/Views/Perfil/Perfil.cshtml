@@ -1,0 +1,197 @@
+﻿
+@using NutriBuddy.Resources;
+@using System;
+@using NutriBuddy.Models;
+@{
+    Layout = "~/Views/Shared/_LayoutPZ.cshtml";
+    var localizaciones = ViewData["localizaciones"] as Dictionary<string, List<ProvinciaBasica>>;
+    var datosPerfil = ViewData["datosPerfil"] as Dictionary<string, string>;
+
+}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+<link rel="stylesheet" href="~/Content/Styles/Formularios.css">
+<script src="~/Scripts/nutribuddy/Validadores.js"></script>
+
+@*<link href="~/Content/Styles/Login.css" rel="stylesheet" />*@
+
+<div class="contentForm" style="border:none">
+    <h1 class="formTitle" style=" border-bottom: solid 2px #33363a; width: 100%; text-align: center; margin-bottom: 40px;">@resource.profile</h1>
+
+    <div class="login" style="margin-bottom: 40px; width: 100%;">
+
+        <form id="login" method="get" action="javascript:registrar()">
+            <label class="label">
+                <b>
+                    @trabajadores.form_Name
+                </b>
+            </label>
+
+            <input type="text" class="inputProfile" id="Nombre" placeholder="@trabajadores.form_Name" value="@datosPerfil["Nombre"]" readonly>
+            <br><br>
+
+            <label class="label">
+                <b>
+                    @trabajadores.form_Surname
+                </b>
+            </label>
+            <input type="text" class="inputProfile" id="Apellidos" placeholder="@trabajadores.form_Surname" value="@datosPerfil["Apellidos"]" readonly>
+            <br><br>
+
+            <label class="label">
+                <b>
+                    @trabajadores.form_Email
+                </b>
+            </label>
+            <input type="text" class="inputProfile" id="Email" placeholder="@trabajadores.form_Email" value="@datosPerfil["Email"]" readonly>
+            @*<br><br>
+
+                <label class="label">
+                    <b>
+                        @resource.login_pass
+                    </b>
+                </label>
+                <input type="Password" name="Pass" id="Contrasenya" class="inputProfile" placeholder="@resource.login_pass">
+                <label id="showPassword"><input type="checkbox" /> @resource.login_seePass</label><br />*@
+
+            <hr style="width: 100%;
+" />
+
+            <label class="label">
+                <b>
+                    @trabajadores.form_DNI
+                </b>
+            </label>
+            <input type="text" class="inputProfile" id="Dni" placeholder="@trabajadores.form_DNI" value="@datosPerfil["DNI"]" readonly>
+            <br><br>
+
+            <label class="label">
+                <b>
+                    @trabajadores.form_address
+                </b>
+            </label>
+            <input type="text" class="inputProfile" id="Direccion" placeholder="@trabajadores.form_address" value="@datosPerfil["Direccion"]" readonly>
+            <br><br>
+
+            <label class="label">
+                <b>
+                    @trabajadores.form_State
+                </b>
+            </label>
+
+            <input type="text" class="inputProfile" id="Provincia" placeholder="@trabajadores.form_State" value="@datosPerfil["Provincia"]" readonly>
+
+            @*<select class="inputProfile" style="width: 488px;" id="Provincia">
+                    <option value="-1">--</option>
+                    @{
+                        foreach (KeyValuePair<string, List<ProvinciaBasica>> loc in localizaciones)
+                        {
+                            <optgroup label="@loc.Key">
+                                @{
+                                    foreach (ProvinciaBasica prov in loc.Value)
+                                    {
+                                        <option value="@prov.ID">@prov.Nombre</option>
+                                    }
+                                }
+                            </optgroup>
+                        }
+                    }
+                </select>*@
+
+            <br><br>
+
+            <label class="label">
+                <b>
+                    @trabajadores.form_Phone
+                </b>
+            </label>
+            <input type="text" class="inputProfile" id="Telefono" placeholder="@trabajadores.form_Phone" value="@datosPerfil["Telefono"]" readonly>
+            <br><br>
+
+            <label class="label">
+                <b>
+                    @resource.birthday
+                </b>
+            </label>
+            <input type="text" class="inputProfile" id="FechaNacimiento" value="@datosPerfil["FechaNacimiento"]" readonly>
+            @*<br><br>
+                <center>
+                    <button class="btnNB logBtn " type="submit" id="btnRegistrar" style="width: 30%; padding-left: 25px; padding-right: 25px; height: 40px; margin: auto;">@resource.sign_in</button>
+                </center>
+                <br />
+                <center>
+                    <button class="btnNB secBtn" type="button" id="btnVolver" style="width: 30%; padding-left: 25px; padding-right: 25px; height: 40px; margin: auto;">@resource.recP_ComeBack</button>
+                </center>*@
+        </form>
+    </div>
+
+
+    @*<div class="formBlock">
+            <div>
+                <label class="label">@trabajadores.form_Name*:</label>
+                <input id="NombreTC" type="text" value="" />
+            </div>
+            <div>
+                <label class="label">@trabajadores.form_Surname*:</label>
+                <input id="ApellidosTC" type="text" value="" />
+            </div>
+        </div>
+        <div class="formBlock">
+            <div>
+                <label class="label">@trabajadores.form_Position*:</label>
+                <select class="js-example-basic-multiple" multiple="multiple" name="puestos[]" id="puestosTC" data-width="100%">
+                </select>
+            </div>
+        </div>
+        <div class="formBlock">
+            <div>
+                <label class="label">@trabajadores.form_SS*:</label>
+                <input id="SSR" type="text" value="" />
+            </div>
+        </div>
+        <div class="formBlock">
+            <div>
+                <label class="label">@trabajadores.form_DNI*:</label>
+                <input id="DNITC" type="text" value="" />
+            </div>
+            <div>
+                <label class="label">@trabajadores.form_Nacionality*:</label>
+                <input id="NacionalidadTC" type="text" value="" />
+            </div>
+        </div>
+        <div class="formBlock">
+            <div>
+                <label class="label">@trabajadores.form_State</label>
+                <select id="ProvinciaTC">
+                    <option value="-1">--</option>
+                    @{
+                        foreach (KeyValuePair<string, List<ProvinciaBasica>> loc in localizaciones)
+                        {
+                            <optgroup label="@loc.Key">
+                                @{
+                                    foreach (ProvinciaBasica prov in loc.Value)
+                                    {
+                                        <option value="@prov.ID">@prov.Nombre</option>
+                                    }
+                                }
+                            </optgroup>
+                        }
+                    }
+                </select>
+            </div>
+            <div>
+                <label class="label">@trabajadores.form_Location*:</label>
+                <input id="LocalidadTC" type="text" value="" />
+            </div>
+        </div>
+        <div class="formBlock">
+            <div>
+                <label class="label">@trabajadores.form_Email*:</label>
+                <input id="EmailTC" type="text" value="" />
+            </div>
+            <div>
+                <label class="label">@trabajadores.form_Phone*:</label>
+                <input id="TelefonoTC" type="text" value=")" />
+            </div>
+        </div>*@
+</div>

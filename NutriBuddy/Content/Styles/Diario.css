@@ -1,0 +1,216 @@
+﻿.spanText {
+    font-size: larger;
+    margin-right: 0.75rem;
+}
+
+
+.selectTrabajador {
+    z-index: 800;
+    position: absolute;
+    background: #fff;
+    height: 33px;
+    overflow: hidden;
+    width: 30%;
+    outline: none;
+}
+/*CALENDARIO*/
+#calendar {
+    margin-top: 2rem;
+}
+
+    #calendar div table thead {
+        background: #9fdc5d;
+    }
+
+/*SOBREESCRIBIENDO LOS ESTILOS PREDETERMINADOS DE FULLCALENDAR*/
+.fc .fc-button-primary {
+    color: #33363a !important;
+    background-color: #9fdc5d !important;
+    border-color: #9fdc5d !important;
+    font-weight: 600 !important;
+}
+
+    .fc .fc-button-primary:hover {
+        color: #212529 !important;
+        background-color: #f8dc7f !important;
+        border-color: #f8dc7f !important;
+    }
+
+    .fc .fc-button-primary:disabled {
+        color: #33363a !important;
+        background-color: #d5dc72 !important;
+        border-color: #d5dc72 !important;
+    }
+
+        .fc .fc-button-primary:disabled:hover {
+            color: #33363a !important;
+            background-color: #d5dc72 !important;
+            border-color: #d5dc72 !important;
+        }
+
+.fc .fc-daygrid-day.fc-day-today {
+    background: linear-gradient(0deg, rgba(159,220,93,1) 0%, rgba(159,220,93,1) 35%, rgba(252,220,129,1) 100%);
+}
+
+.fc .fc-toolbar-title {
+    font-size: 2.5em !important;
+    margin: 0;
+    color: #33363a !important;
+    font-weight: 800 !important;
+}
+
+
+
+.anydirCitaDiv {
+    color: #33363a;
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+/*ESTILOS PARA MODAL*/
+.modal-header h4 {
+    font-weight: 800;
+    color: #33363a;
+}
+
+
+#anyadirCitaBody div label {
+    margin: 0 3%;
+}
+
+#anyadirCitaBody div select,
+#anyadirCitaBody div input,
+#anyadirCitaBody div textarea {
+    /*width: 90%;*/
+    max-width: none;
+}
+
+/*MODAL DIARIO*/
+.tituloTarjeta {
+    color: #33363a;
+    font-family: 'Nunito';
+    font-weight: 600;
+    width: 100%;
+    border-bottom: #33363a33 solid 2px;
+}
+
+    .tituloTarjeta:hover {
+        background-color: #33363a;
+        color: white;
+    }
+
+.card-header {
+    background: #9fdc5d !important;
+}
+
+.btnCard {
+    background: #f5dc7f;
+    border-color: #f5dc7f;
+    color: #33363a;
+    border-radius: 5px;
+    font-family: 'Nunito',serif;
+    font-weight: 600;
+    font-size: small;
+    float: left;
+}
+
+.btnCard:hover {
+    background: #33363a;
+    border-color: #33363a;
+    color: #fff;
+}
+
+.btnCard:disabled {
+    background: #dbdbdb;
+    border-color: grey;
+    color: #939393;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#cardComidas {
+    font-size: small;
+    padding: 1vh;
+    width: 100%;
+}
+
+.comida {
+    background: #efefef;
+    padding: 1vh;
+    margin: 2vh;
+    border-radius: 15px;
+    box-shadow: 4px 4px 5px rgb(0 0 0 / 10%);
+}
+
+.comidaBloque {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+.comidaTextArea {
+    overflow-y: auto;
+    height: 100px;
+    resize: none;
+}
+
+.fc-daygrid-day {
+    cursor: pointer;
+}
+
+    .fc-daygrid-day:hover {
+        background: #f1ecec;
+    }
+
+.btn:focus {
+    box-shadow: none;
+}
+
+.borrarComida {
+    float: right;
+    font-size: larger;
+    cursor: pointer;
+}
+
+.formSalud div{
+    margin: 2% 0;
+}
+
+.emocionesDiv {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    padding: 0px 13% 0 5%;
+}
+
+    .emocionesDiv label input {
+        accent-color: #f2233a;
+    }
+
+#deportesDiv div {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    accent-color: #f2233a;
+}
+
+.subLabel {
+    font-size: smaller;
+    width: 100%;
+}
+
+.deporteItem {
+    margin: 1% 3% !important;
+    width: 22%;
+}

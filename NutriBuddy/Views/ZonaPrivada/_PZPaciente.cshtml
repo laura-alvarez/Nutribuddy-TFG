@@ -1,0 +1,61 @@
+﻿<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<link href="~/Content/Styles/PZHome.css" rel="stylesheet">
+<script src="~/Scripts/nutribuddy/Utilidades.js"></script>
+<script src="~/Scripts/nutribuddy/PZ_Pacientes.js"></script>
+@using NutriBuddy.Resources;
+@using NutriBuddy.Models;
+@{
+   
+    Layout = "~/Views/Shared/_LayoutPZ.cshtml"; 
+    var mes = ViewData["mes"].ToString();
+    var hayCita = ViewData["hayCita"] as bool?;
+    var sigCitaCentro = ViewData["sigCitaCentro"].ToString();
+    var sigCitaDia = ViewData["sigCitaDia"].ToString();
+    var sigCitaTrabajador = ViewData["sigCitaTrabajador"].ToString();
+}
+
+<div style=" display: flex; flex-direction: column; align-content: center; width: 100% !important;">
+    @if (hayCita != null && hayCita == true)
+    {
+        <div id="recordatorioCita" style="margin-top: 1%; padding-top:2%; border-top: 2px #33363a73 dashed;">
+            <p>
+                <img src="~/Content/Img/cita.png" />@paciente.pz_sigcita_1
+                <span id="sigCitaCentro">@sigCitaCentro</span>:
+                <span id="sigCitaDia">@sigCitaDia</span> @paciente.pz_sigcita_2
+                <span>@sigCitaTrabajador</span>
+            </p>
+        </div>
+    }
+    <div id="resumenMes">
+        <div id="tituloMes"><p id="tituloMesP" style="color: #f55e53 !important;">@paciente.pz_resumen @mes @DateTime.Today.Year</p></div>
+        <div id="instrucciones" style=" margin-bottom: 2%; border-bottom: 2px #33363a73 dashed;"><p style="color: black !important; text-align: center;">@paciente.pz_instruccion</p></div>
+        <div id="contenidoMes" class="hidden">
+            <div id="graficaProgreso" style=" width: 50% !important;"></div>
+            <div id="resumenMes" style="width: 50% !important; margin-left: 10%; ">
+                <div id="emocionMes">
+                    <div style="font-size:larger; font-weight:800">@paciente.pz_emocion</div>
+                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
+                        <img id="emocionImg" src="~/Content/Img/Emociones/Contento_ic.svg" width="150px" style="border-radius: 50%; border: solid 2px grey;" />
+                        <span style=" margin-left: 3% !important;">@paciente.pz_emocion_msg <span id="emocionMsg" style=" font-weight: 800; font-style: italic;"></span></span>
+                    </div>
+                </div>
+                <div id="deporteMes" style="margin-top:2%">
+                    <div style="font-size:larger; font-weight:800">@paciente.pz_deporte</div>
+                    <div><span id="diasDeporte">10</span></div>
+                </div>
+                <div id="suenyoMes" style="margin-top:2%">
+                    <div style="font-size:larger; font-weight:800">@paciente.pz_suenyo</div>
+                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
+                        <img src="~/Content/Img/dormir.png" width="64px" />
+                        <span id="suenyoMSg" style=" margin-left: 3% !important;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="noContenidoMes" style="display: flex; flex-direction: column; align-items: center;">
+            <p>@paciente.pz_noinfo</p>
+        </div>
+
+    </div>
+
+</div>

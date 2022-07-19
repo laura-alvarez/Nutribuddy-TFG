@@ -1,0 +1,221 @@
+﻿@using System;
+@using NutriBuddy.Resources;
+@{
+    var idioma = Session["idioma"].ToString();
+    var estadoMenu = ViewData["estadoMenu"] as Boolean?;
+    var permisos = Session["permisos"] as List<int>;
+
+    var idActivo = int.Parse(Session["seccionActiva"].ToString());
+    var mostrarCentros = Boolean.Parse(Session["mostrarCentros"].ToString());
+    var centrosDisponibles = Session["centros"] as List<NutriBuddy.Models.Propios.Basico>;
+    var centroActual = int.Parse(Session["centroActual"].ToString());
+    var centroN = "";
+    if(centroActual > 0)
+    {
+        centroN = centrosDisponibles.Where(x => x.ID == centroActual).Select(x => x.Nombre).FirstOrDefault();
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NutriBuddy - Zona privada</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Scripts/nutribuddy/Utilidades.js"></script>
+
+    <!--FUENTE NUNITO GOOGLE-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;600;900&amp;display=swap" rel="stylesheet">
+    <!---FONT AWESOME-->
+    <link href="~/Content/Fontawesome/css/all.css" rel="stylesheet">
+    <link href="~/Content/Fontawesome/css/solid.css" rel="stylesheet">
+  
+    <!--SWEETALERT-->    
+    <script src="~/Scripts/SweetAlert/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="~/Scripts/SweetAlert/sweetalert2.min.css">
+
+    <!--CSS PROPIOS-->
+    <link rel="stylesheet" href="~/Content/Styles/LayoutPZ.css" />
+    <script type="text/javascript" src="~/Scripts/nutribuddy/LayoutPZ.js"></script>
+    <script type="text/javascript" src="~/Scripts/nutribuddy/Utilidades.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="sidebar" class="@(estadoMenu != null && estadoMenu == true?"active":"")"a>
+            <div class="sidebar-header">
+                <div id="expanded">
+                    <img id="sidebarLogo" src="~/Content/Img/Logo/LogoNutriBuddyVertical.png" alt="NutriBuddy"/>
+                    <div class="divButtonCollapse" title="@menuZonaPrivada.colapsarMenu"><i class="buttonCollapse fa-solid fa-angles-left"></i></div>
+                </div>
+                <div id="collapsed">
+                    <strong>
+                        <img id="sidebarLogoNB" src="~/Content/Img/Logo/LogoEditableVerticalNB.png" alt="NutriBuddy" style="margin-left: -12px;" />
+                    </strong>
+                    <div class="divButtonCollapse" title="@menuZonaPrivada.expandirMenu"><i class="buttonCollapse fa-solid fa-angles-right fa-beat"></i></div>
+
+                </div>
+            </div>
+            @if (mostrarCentros)
+            {
+            <div id="centrosdisponibles" class="sidebar-header controlCentrosDiv">
+                <div id="centroExpanded" style="font-size:larger; font-weight:800">@menuZonaPrivada.centroActual:</div>
+                <div id="centroCollapsed" style="font-size: larger;" title="@menuZonaPrivada.centroActual"><i class="fa-solid fa-building"></i></div>
+                <div id="centroActual">@centroN</div>
+                @if (centrosDisponibles.Count > 1)
+                {
+                    <div id="centroCambiarExpanded" class="cambiarCentroLink"><i class="fa-solid fa-arrow-right-arrow-left" style="margin-right:5px;"></i>@menuZonaPrivada.centroActualCambiar</div>
+                    <div id="centroCambiarCollapsed" class="cambiarCentroLink" title="@menuZonaPrivada.centroActualCambiar"><i class="fa-solid fa-arrow-right-arrow-left" style="cursor:pointer;"></i></div>
+                }
+            </div>
+            }
+            <!--Items del menú-->
+        <ul class="list-unstyled components">
+            @if (permisos.Contains(1003) || permisos.Contains(4) || permisos.Contains(1)) { 
+                <li id="bloquePerfil" @((idActivo > 0 && idActivo < 5) || idActivo == 1003 ? " class=active" : "")>
+                    <a href="#perfilSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">
+                        <i class="fa-solid fa-gears"></i>
+                        @menuZonaPrivada.perfil
+                    </a>
+                    <ul class="list-unstyled collapse submenu" id="perfilSubmenu" style="webkit-box-shadow: inset 0px 0px 26px 18px rgb(0 0 0 / 7%); box-shadow: inset 0px 0px 26px 18px rgb(0 0 0 / 7%);}">
+                        @if (permisos.Contains(1003))
+                        {
+                            <li>
+                                <a href="/ZonaPrivada/ZonaPrivada?menu=1003">@menuZonaPrivada.resumen</a>
+                            </li>
+                        }
+                        @if (permisos.Contains(4))
+                        {
+                            <li>
+                                <a href="/ZonaPrivada/ZonaPrivada?menu=4">@menuZonaPrivada.perfil_datos</a>
+                            </li>
+                        }  
+                        @if (permisos.Contains(1))
+                        {
+                            <li>
+                                <a href="/ZonaPrivada/ZonaPrivada?menu=1">@menuZonaPrivada.perfil_datos</a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+            @if (permisos.Contains(5))
+            {
+                <li id="bloqueAgenda" @(idActivo == 5 ? " class=active" : "")>
+                    <a href="/ZonaPrivada/ZonaPrivada?menu=5">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        @menuZonaPrivada.agenda
+                    </a>
+                </li>
+            }
+            @if (permisos.Contains(6))
+            {
+                <li id="bloqueCentros" @(idActivo == 6 ? " class=active" : "")>
+                    <a href="/ZonaPrivada/ZonaPrivada?menu=6">
+                        <i class="fa-solid fa-house-medical"></i>
+                        @menuZonaPrivada.centros
+                    </a>
+                </li>
+            }
+            @if (permisos.Contains(7))
+            {
+                <li id="bloquePersonal" @(idActivo == 7 ? " class=active" : "")>
+                    <a href="/ZonaPrivada/ZonaPrivada?menu=7">
+                        <i class="fa-solid fa-users"></i>
+                        @menuZonaPrivada.personal
+                    </a>
+                </li>
+            }
+            @if (permisos.Contains(8))
+            {
+                <li id="bloquePacientes" @(idActivo == 8 ? " class=active" : "")>
+                    <a href="/ZonaPrivada/ZonaPrivada?menu=8">
+                        <i class="fa-solid fa-hospital-user"></i>
+                        @menuZonaPrivada.pacientes
+                    </a>
+                </li>
+            }
+            @if (permisos.Contains(9))
+            {
+                <li id="bloqueDiario" @(idActivo == 9 ? " class=active" : "")>
+                    <a href="/ZonaPrivada/ZonaPrivada?menu=9">
+                        <i class="fa-solid fa-book-medical"></i>
+                        @menuZonaPrivada.diario
+                    </a>
+                </li>
+            }
+            @if (permisos.Contains(1002))
+            {
+                <li id="bloquePacientes" @(idActivo == 1002? " class=active" : "")>
+                    <a href="/ZonaPrivada/ZonaPrivada?menu=1002">
+                        <i class="fa-solid fa-hospital-user"></i>
+                        @menuZonaPrivada.mi_centro
+                    </a>
+                </li>
+            }
+        </ul>
+            <ul class="list-unstyled components">
+                <li>
+                    @switch (idioma)
+                    {
+                        case "en":
+                            <a id="idiomasMain" href="#idiomas" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">
+                                <img src="~/Content/Img/Flags/english.png" alt="ESP" style="margin-right: 10px;" />@resource.langEnglish
+                            </a>
+                            break;
+                        case "es":
+                        default:
+                            <a id="idiomasMain" href="#idiomas" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">
+                                <img src="~/Content/Img/Flags/spanish.png" alt="ESP" style="margin-right: 10px;" />@resource.langSpanish
+                            </a>
+                            break;
+                    }
+                    <ul class="list-unstyled collapse submenu" id="idiomas">
+                        <li><a class="dropdown-item" href="javascript:cambiarIdioma('es');"> <img id="es-ESimg" src="~/Content/Img/Flags/spanish.png" alt="@resource.langSpanish" style=" margin-right: 0.5em; margin-bottom: 0.2em;" />@resource.langSpanish</a></li>
+                        <li><a class="dropdown-item" href="javascript:cambiarIdioma('en');"> <img id="en-USimg" src="~/Content/Img/Flags/english.png" alt="@resource.langEnglish" style=" margin-right: 0.5em; margin-bottom: 0.2em;" />@resource.langEnglish</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a id="cerrarSesion" href="#">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        @menuZonaPrivada.logOut
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </nav>
+
+        </div>
+    </div>
+    <div id="cambiarCentroModal" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="modalTitle2" class="modal-title" style="font-weight:800;">@menuZonaPrivada.centroCambiarCambiar</h4>
+                    <i class="fa-solid fa-xmark modalCloseBtn" data-dismiss="modal"></i>
+                </div>
+                <div id="modalBody" class="modal-body">
+                    <p>@menuZonaPrivada.centroCambiarMsg</p>
+                    <select id="centroDestino" style="width:50%">
+                        @for(int index = 0; index<centrosDisponibles.Count; index++)
+                        {
+                            <option value="@centrosDisponibles[index].ID" @(centrosDisponibles[index].ID ==centroActual ?"selected":"")>@centrosDisponibles[index].Nombre</option>
+                        }
+                    </select>
+                </div>                
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+

@@ -1,0 +1,69 @@
+﻿@using System;
+@using NutriBuddy.Resources;
+@using NutriBuddy.Models;
+@{
+    Layout = "~/Views/Shared/_LayoutPZ.cshtml";
+    var centro = ViewData["centro"] as CentroForm;
+}
+<link href="~/Content/Styles/Diario.css" rel="stylesheet" />
+<link href="~/Content/Fullcalendar/main.css" rel="stylesheet" />
+<script src="~/Content/Fullcalendar/main.js"></script>
+<script src="~/Content/Fullcalendar/locales/es.js"></script>
+<script src="~/Scripts/nutribuddy/MiCentro.js"></script>
+<div style="width: 100%; display: flex; align-items: stretch;">
+    <div style="width: 30%;  padding: 2%;">
+        <h3 style="font-weight: 800; color: #33363a">@centro.Nombre</h3>
+        <p style="color: #33363a; text-align: justify; ">
+           @centro.Descripcion
+        </p>
+        <p style="color: #33363a;"><i class="fa-solid fa-envelope" style=" margin-right: 3%;"></i>@centro.Email</p>
+        <p style="color: #33363a;"><i class="fa-solid fa-phone" style=" margin-right: 3%;"></i>@centro.Telefono</p>
+        <p style="color: #33363a; text-align:justify"><i class="fa-solid fa-location-dot" style=" margin-right: 3%;"></i>@centro.Direccion</p>
+        <div style="display: flex; flex-direction: column;">
+            <label style="font-weight:600; text-decoration:underline">Tipo de cita:</label>
+            @if (centro.Consultation_F2F)
+            {
+            <label><i class="fa-solid fa-house-chimney-medical" style=" margin-right: 3%;"></i>Presencial</label>
+            }
+            @if (centro.Consultation_Online)
+            {
+            <label><i class="fa-solid fa-laptop-medical" style=" margin-right: 3%;"></i>Online</label>
+            }
+        </div>
+    </div>
+    <div style="width: 70%; padding: 2% 4%;">
+        <div id="calendario"></div>
+    </div>
+</div>
+
+<div id="citaModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa-solid fa-xmark modalCloseBtn" data-dismiss="modal"></i>
+            </div>
+            <div id="anyadirCitaBody" class="modal-body">
+                <div>
+                    <h5 style=" font-weight: 600; ">@centros.agenda_13:</h5>
+                    <p style="color: #33363a" id="TipoCita"></p>
+
+                </div>
+                <div>
+                    <h5 style=" font-weight: 600; ">@centros.agenda_7:</h5>
+                    <p style="color: #33363a" id="CitaTrabajador"></p>
+
+                </div>  
+                <div>
+                    <h5 style=" font-weight: 600; ">@centros.agenda_16:</h5>
+                    <p style="color: #33363a" id="CitaDia"></p>
+
+                </div>
+                <div id="PautasDiv">
+                    <h5 style=" font-weight: 600; ">@centros.agenda_21:</h5>
+                    <p style="color: #33363a" id="Pautas"></p>
+
+                </div>                
+            </div>           
+        </div>
+    </div>
+</div>

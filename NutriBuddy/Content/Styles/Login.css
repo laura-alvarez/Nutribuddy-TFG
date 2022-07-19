@@ -1,0 +1,168 @@
+﻿
+@media (max-width: 800px) {
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Nunito', sans-serif;
+        background-image: url('/Content/Img/bg_Veggies.jpg');
+        background-repeat: repeat;
+    }
+}
+
+@media (min-width: 800px) {
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Nunito', sans-serif;
+        background-image: url('/Content/Img/bg_Veggies.jpg');
+        background-repeat: repeat;
+    }
+}
+
+.container {
+    margin-top: 5em !important;
+}
+
+.loginLogo{
+    margin:auto;
+    width:20em;
+}
+
+.loginLogo img{
+    width:100%;
+}
+
+.login {
+    width: 30em;
+    overflow: hidden;
+    margin: auto;
+    margin-top: -75px;
+    padding: 3em;
+    background: linear-gradient(0deg, rgba(159,220,93,1) 0%, rgba(159,220,93,1) 35%, rgba(252,220,129,1) 100%);
+    border-radius: 15px;
+}
+
+label {
+    color: #464646;
+    font-size: 1em;
+    font-family: 'Nunito', sans-serif;
+}
+
+/*#Email {
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+}*/
+
+.Pass {
+    width: calc(100% - 10px);
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+
+.RecoverCodeField {
+    width: 95%;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+    margin-top: 2%;
+}
+
+
+
+#showPassword {
+    font-size: smaller;
+}
+
+#showPassword input[type='checkbox']:checked {
+    filter: invert(100%) hue-rotate(18deg) brightness(1.7);
+}
+
+.btnNB {
+    width: 75%;
+    height: 30px;
+    border: none;
+    border-radius: 17px;
+    padding-left: 7px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    margin-left: 5em;
+    cursor: pointer;
+}
+
+#logIn {
+    background: rgb(242, 35, 58);
+    color: #FFF;
+}
+
+.secBtn {
+    background: rgb(253, 157, 69);
+    color: #464646;
+}
+
+.secBtn:hover {
+    background: rgb(242, 35, 58);
+}
+
+.btnLogin:hover {
+    background: rgb(242, 35, 58) !important;
+    color: #FFF;
+}
+
+
+
+#newCenterInfo {
+    font-size: small;
+    font-weight: 600;
+}
+
+
+a {
+    float: right;
+    background-color: grey;
+}
+
+.inputRecover {
+    width: 84% !important;
+    height: 20px;
+    padding-right: 50px;
+}
+
+.inputRecoverBtn {
+    margin-left: -50px;
+    height: 32px;
+    width: 50px;
+    background: #f2233a;
+    color: white;
+    border: 0;
+    -webkit-appearance: none;
+    border-radius: 0 3px 3px 0;
+    cursor:pointer
+}
+
+.inputRecoverBtn:hover {
+    background: #ff9f3c;
+}
+
+
+.inputRecoverBtn:disabled {
+    background: grey;
+}
+
+.logBtn {
+    background: rgb(242, 35, 58);
+    color: #FFF;
+}
+
+.logBtn:hover {
+    background: #ff9f3c !important;
+}
+
+.hidden{
+    display:none;
+}

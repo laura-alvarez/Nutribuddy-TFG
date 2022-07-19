@@ -1,0 +1,105 @@
+﻿@using NutriBuddy.Resources
+@{ 
+    var idioma = Session["idioma"].ToString();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/nutribuddy/Utilidades.js"></script>
+
+    <!--FUENTE NUNITO-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;600;900&display=swap" rel="stylesheet">
+
+    <link href="~/Content/Fontawesome/css/all.css" rel="stylesheet">
+    <link href="~/Content/Fontawesome/css/solid.css" rel="stylesheet">
+
+    <!--SWEETALERT-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+
+    <!--RECURSOS PROPIOS-->
+    <script type="text/javascript" src="~/Scripts/nutribuddy/Home.js"></script>
+
+    <link rel="stylesheet" href="~/Content/Styles/Home.css">
+</head>
+<body>
+    <div style="position: sticky; top: 0; z-index: 250;">
+        <div style=" padding: 0 2em 1em 2em; display: flex; justify-content: space-between; background: linear-gradient(0deg, rgba(159,220,93,1) 0%, rgba(159,220,93,1) 35%, rgba(252,220,129,1) 100%); ">
+            <a href="/"><img src="~/Content/Img/Logo/LogoNutriBuddy.png" style=" width: 20em;" /></a>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background: #ff9f3c !important; border-bottom: #34373a47 2px solid;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto" style=" font-size: large; font-weight: 800;">
+                    <li class="nav-item" id="linkAcercaNB">
+                        @*active*@
+                        <a class="nav-link" href="~/Home/AcercaNB">@resource.menu_about</a>
+                    </li>                   
+                    <li class="nav-item" id="linkCentros">
+                        <a class="nav-link" href="~/Home/Centros">@resource.menu_centers</a>
+                    </li>
+                    <li class="nav-item" id="linkPlanes">
+                        <a class="nav-link" href="~/Home/Precios">@resource.menu_pricing</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ">
+                    <li id="idiomas" class="nav-item dropdown" style=" margin-right: 0.75em;">
+                        @switch (idioma)
+                        {
+                            case "en":
+                                <a class="nav-link dropdown-toggle" href="en" id="enFlag" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" font-size: large; font-weight: 800;">
+                                    <img id="currentLanguage" src="/Content/Img/Flags/english.png" alt="@resource.langEnglish" style=" margin-right: 0.5em; margin-bottom: 0.2em;" />@resource.langEnglish
+                                </a>
+                                break;
+                            case "es":
+                            default:
+                                <a class="nav-link dropdown-toggle" href="#" id="es" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" font-size: large; font-weight: 800;">
+                                    <img id="currentLanguage" src="/Content/Img/Flags/spanish.png" alt="@resource.langSpanish" style=" margin-right: 0.5em; margin-bottom: 0.2em;" />@resource.langSpanish
+                                </a>
+                                break;
+                        }
+                        <div id="menuIdiomas" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="javascript:cambiarIdioma('es');"> <img id="es-ESimg" src="~/Content/Img/Flags/spanish.png" alt="@resource.langSpanish" style=" margin-right: 0.5em; margin-bottom: 0.2em;" />@resource.langSpanish</a>
+                            <a class="dropdown-item" href="javascript:cambiarIdioma('en');"> <img id="en-USimg" src="~/Content/Img/Flags/english.png" alt="@resource.langEnglish" style=" margin-right: 0.5em; margin-bottom: 0.2em;" />@resource.langEnglish</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <button id="privateZone" type="button" class="btn btnNB">
+                            <i class="fa-solid fa-user"></i>
+                            @resource.btn_privatezone
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid body-content">
+        @RenderBody()
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="CargandoModal" tabindex="-1" role="dialog" @*aria-labelledby="exampleModalCenterTitle"*@ aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content loader">                
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

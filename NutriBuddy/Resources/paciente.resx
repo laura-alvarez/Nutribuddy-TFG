@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="pz_deporte" xml:space="preserve">
+    <value>Days you have done a physical activity</value>
+  </data>
+  <data name="pz_emocion" xml:space="preserve">
+    <value>Emotion of the month</value>
+  </data>
+  <data name="pz_emocion_msg" xml:space="preserve">
+    <value>This month above all you are</value>
+  </data>
+  <data name="pz_instruccion" xml:space="preserve">
+    <value>To update these data you must complete the nutrition diary</value>
+  </data>
+  <data name="pz_noinfo" xml:space="preserve">
+    <value>No data for this month yet</value>
+  </data>
+  <data name="pz_resumen" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="pz_sex" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="pz_sigcita_1" xml:space="preserve">
+    <value>Next appointment in</value>
+  </data>
+  <data name="pz_sigcita_2" xml:space="preserve">
+    <value>with</value>
+  </data>
+  <data name="pz_suenyo" xml:space="preserve">
+    <value>Sleep quality of the month</value>
+  </data>
+  <data name="pz_suenyo_404" xml:space="preserve">
+    <value>No sleep information</value>
+  </data>
+  <data name="pz_suenyo_bien" xml:space="preserve">
+    <value>You are sleeping great, good job!</value>
+  </data>
+  <data name="pz_suenyo_mal" xml:space="preserve">
+    <value>Oh no! You have to try to improve your quality of sleep, cheer up!</value>
+  </data>
+  <data name="pz_suenyo_regular" xml:space="preserve">
+    <value>You are sleeping quite well, but you can improve</value>
+  </data>
+  <data name="p_basic_1" xml:space="preserve">
+    <value>First of all, what is your main goal?</value>
+  </data>
+  <data name="p_basic_11" xml:space="preserve">
+    <value>Gain weight</value>
+  </data>
+  <data name="p_basic_12" xml:space="preserve">
+    <value>Lose weight</value>
+  </data>
+  <data name="p_basic_13" xml:space="preserve">
+    <value>Improve my health</value>
+  </data>
+  <data name="p_basic_2" xml:space="preserve">
+    <value>What lifestyle do you currently lead?</value>
+  </data>
+  <data name="p_basic_21" xml:space="preserve">
+    <value>Sedentary</value>
+  </data>
+  <data name="p_basic_22" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="p_basic_3" xml:space="preserve">
+    <value>Do you often suffer from stress or anxiety?</value>
+  </data>
+  <data name="p_basic_31" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="p_basic_32" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="p_basic_4" xml:space="preserve">
+    <value>Do you feel bad about your physical appearance?</value>
+  </data>
+  <data name="p_Btb_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="p_Btn_End" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="p_Btn_Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="p_Btn_Start" xml:space="preserve">
+    <value>Let's go!</value>
+  </data>
+  <data name="p_Inicial_Msg1" xml:space="preserve">
+    <value>In order to help you we need to know some information about you</value>
+  </data>
+  <data name="p_Inicial_Msg2" xml:space="preserve">
+    <value>Good job! Confirm the data sending to finish</value>
+  </data>
+  <data name="p_Inicial_Msg3" xml:space="preserve">
+    <value>This part is totally optional, record your measurements only if you wish</value>
+  </data>
+  <data name="p_measure_1" xml:space="preserve">
+    <value>Height (cm)</value>
+  </data>
+  <data name="p_measure_2" xml:space="preserve">
+    <value>Actual weight (kg)</value>
+  </data>
+  <data name="p_measure_3" xml:space="preserve">
+    <value>Your current BMI is: </value>
+  </data>
+  <data name="p_measure_4" xml:space="preserve">
+    <value>Measurements (cm)</value>
+  </data>
+  <data name="p_measure_41" xml:space="preserve">
+    <value>Chest</value>
+  </data>
+  <data name="p_measure_42" xml:space="preserve">
+    <value>Waist</value>
+  </data>
+  <data name="p_measure_43" xml:space="preserve">
+    <value>Hip</value>
+  </data>
+  <data name="p_measure_5" xml:space="preserve">
+    <value>Other measures (%)</value>
+  </data>
+  <data name="p_measure_51" xml:space="preserve">
+    <value>% Fat</value>
+  </data>
+  <data name="p_measure_52" xml:space="preserve">
+    <value>% Muscle</value>
+  </data>
+  <data name="p_measure_53" xml:space="preserve">
+    <value>% Water</value>
+  </data>
+  <data name="p_sex_1" xml:space="preserve">
+    <value>Are you...?</value>
+  </data>
+  <data name="p_sex_11" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="p_sex_12" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="p_TitleInicial" xml:space="preserve">
+    <value>Welcome to NutriBuddy</value>
+  </data>
+</root>

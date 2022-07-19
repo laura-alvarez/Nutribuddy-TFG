@@ -1,0 +1,2221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NutribuddyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPadre" Type="int" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Centro">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDUsuarioAdminitrador" Type="int" />
+          <Property Name="IDPlan" Type="int" Nullable="false" />
+          <Property Name="CIF" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="NombreCentro" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="250" />
+          <Property Name="IDProvincia" Type="int" Nullable="false" />
+          <Property Name="Localidad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CP" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="FechaBaja" Type="datetime" />
+          <Property Name="MotivoBaja" Type="nvarchar" MaxLength="500" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="EsPresencial" Type="bit" Nullable="false" />
+          <Property Name="EsOnline" Type="bit" Nullable="false" />
+          <Property Name="Website" Type="nvarchar" MaxLength="300" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="MaxTrabajadores" Type="int" Nullable="false" />
+          <Property Name="TrabajadoresActuales" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CentroTrabajador">
+          <Key>
+            <PropertyRef Name="IDTrabajador" />
+            <PropertyRef Name="IDCentro" />
+          </Key>
+          <Property Name="IDTrabajador" Type="int" Nullable="false" />
+          <Property Name="IDCentro" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cita">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDTipo" Type="int" Nullable="false" />
+          <Property Name="IDTrabajador" Type="int" Nullable="false" />
+          <Property Name="IDPaciente" Type="int" Nullable="false" />
+          <Property Name="HoraInicio" Type="datetime" Nullable="false" />
+          <Property Name="HoraFin" Type="datetime" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="450" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="IDCentro" Type="int" Nullable="false" />
+          <Property Name="NotasPrivadas" Type="nvarchar(max)" />
+          <Property Name="PautasPaciente" Type="nvarchar(max)" />
+          <Property Name="Completada" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comida">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDiario" Type="int" Nullable="false" />
+          <Property Name="IDTipoComida" Type="int" Nullable="false" />
+          <Property Name="Alimentos" Type="nvarchar" MaxLength="350" Nullable="false" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="350" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Dia" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComidaTipo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="NombreEN" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComunidadAutonoma">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contacto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="EsCentro" Type="bit" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="9" />
+          <Property Name="Comentario" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="FechaEnvio" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deporte">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDiario" Type="int" Nullable="false" />
+          <Property Name="IDTipoDeporte" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeporteTipo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="NombreEN" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Diario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPaciente" Type="int" Nullable="false" />
+          <Property Name="Dia" Type="datetime" Nullable="false" />
+          <Property Name="AguaCantidad" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="Medicamentos" Type="nvarchar" MaxLength="250" />
+          <Property Name="Menstruaccion" Type="bit" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="IDSuenyo" Type="int" />
+          <Property Name="IDEstado" Type="int" />
+          <Property Name="Deporte" Type="bit" Nullable="false" />
+          <Property Name="ObsDeporte" Type="nvarchar" MaxLength="600" />
+          <Property Name="IDMedidas" Type="int" />
+        </EntityType>
+        <EntityType Name="EstadoAnimicoDiario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDiario" Type="int" Nullable="false" />
+          <Property Name="IDEstadoAnimico" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoAnimicoTipo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="NombreEN" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ObjetivoTipo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="20" />
+          <Property Name="NombreEN" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="OpcionesDiarioTipo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="NombreEN" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="int" Nullable="false" />
+          <Property Name="DNI" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="EsHombre" Type="bit" Nullable="false" />
+          <Property Name="IDCentro" Type="int" />
+          <Property Name="FormularioInicial" Type="bit" Nullable="false" />
+          <Property Name="EsSedentario" Type="bit" Nullable="false" />
+          <Property Name="IDObjetivo" Type="int" />
+          <Property Name="BajaAutoestima" Type="bit" Nullable="false" />
+          <Property Name="TieneEstres" Type="bit" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PacienteMedidas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPaciente" Type="int" Nullable="false" />
+          <Property Name="Altura" Type="decimal" Precision="3" Scale="0" />
+          <Property Name="Peso" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="CmPecho" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="CmCintura" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="CmCadera" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="PGrasa" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="PMagro" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="PAgua" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="PostedDate" Type="datetime" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="IDPlanSucesor" Type="int" />
+          <Property Name="MaxTrabajadores" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IDCCAA" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Puesto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="colorAgenda" Type="nvarchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PuestoTrabajador">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+            <PropertyRef Name="IDPuesto" />
+            <PropertyRef Name="IDCentro" />
+          </Key>
+          <Property Name="IDUsuario" Type="int" Nullable="false" />
+          <Property Name="IDPuesto" Type="int" Nullable="false" />
+          <Property Name="IDCentro" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol_Accion">
+          <Key>
+            <PropertyRef Name="IDRol" />
+            <PropertyRef Name="IDAccion" />
+          </Key>
+          <Property Name="IDRol" Type="int" Nullable="false" />
+          <Property Name="IDAccion" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trabajador">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="int" Nullable="false" />
+          <Property Name="NumSegSocial" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="FechaBaja" Type="datetime" />
+          <Property Name="DNI" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="Nacionalidad" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Localidad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrabajadoresNB">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="int" Nullable="false" />
+          <Property Name="NumSegSocial" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="FechaBaja" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDRol" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="FechaBaja" Type="datetime" />
+          <Property Name="IDProvincia" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="60" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="300" />
+          <Property Name="CodigoRecuperacion" Type="nvarchar" MaxLength="6" />
+          <Property Name="FechaCodigoRecuperacion" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Acciones_Acciones">
+          <End Role="Accion" Type="Self.Accion" Multiplicity="0..1" />
+          <End Role="Accion1" Type="Self.Accion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accion">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accion1">
+              <PropertyRef Name="IDPadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Centro_Plan">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
+          <End Role="Centro" Type="Self.Centro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Centro">
+              <PropertyRef Name="IDPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Centro_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Centro" Type="Self.Centro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Centro">
+              <PropertyRef Name="IDProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Centro_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Centro" Type="Self.Centro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Centro">
+              <PropertyRef Name="IDUsuarioAdminitrador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cita_Centro">
+          <End Role="Centro" Type="Self.Centro" Multiplicity="1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Centro">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="IDCentro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cita_Paciente">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="IDUsuario" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="IDPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cita_Puesto">
+          <End Role="Puesto" Type="Self.Puesto" Multiplicity="1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puesto">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="IDTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cita_TC">
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trabajador">
+              <PropertyRef Name="IDUsuario" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="IDTrabajador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comida_Diario">
+          <End Role="Diario" Type="Self.Diario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Comida" Type="Self.Comida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comida">
+              <PropertyRef Name="IDDiario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comida_TipoComida">
+          <End Role="ComidaTipo" Type="Self.ComidaTipo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Comida" Type="Self.Comida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComidaTipo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comida">
+              <PropertyRef Name="IDTipoComida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CT_Centro">
+          <End Role="Centro" Type="Self.Centro" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CentroTrabajador" Type="Self.CentroTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Centro">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CentroTrabajador">
+              <PropertyRef Name="IDCentro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CT_Trabajador">
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+          <End Role="CentroTrabajador" Type="Self.CentroTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trabajador">
+              <PropertyRef Name="IDUsuario" />
+            </Principal>
+            <Dependent Role="CentroTrabajador">
+              <PropertyRef Name="IDTrabajador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deporte_Diario">
+          <End Role="Diario" Type="Self.Diario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Deporte" Type="Self.Deporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deporte">
+              <PropertyRef Name="IDDiario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deporte_DTipo">
+          <End Role="DeporteTipo" Type="Self.DeporteTipo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Deporte" Type="Self.Deporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeporteTipo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deporte">
+              <PropertyRef Name="IDTipoDeporte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diario_Medidas">
+          <End Role="PacienteMedidas" Type="Self.PacienteMedidas" Multiplicity="0..1" />
+          <End Role="Diario" Type="Self.Diario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PacienteMedidas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Diario">
+              <PropertyRef Name="IDMedidas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diario_OpDiario1">
+          <End Role="OpcionesDiarioTipo" Type="Self.OpcionesDiarioTipo" Multiplicity="0..1" />
+          <End Role="Diario" Type="Self.Diario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OpcionesDiarioTipo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Diario">
+              <PropertyRef Name="IDEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diario_OpDiario2">
+          <End Role="OpcionesDiarioTipo" Type="Self.OpcionesDiarioTipo" Multiplicity="0..1" />
+          <End Role="Diario" Type="Self.Diario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OpcionesDiarioTipo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Diario">
+              <PropertyRef Name="IDSuenyo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diario_Paciente">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Diario" Type="Self.Diario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="IDUsuario" />
+            </Principal>
+            <Dependent Role="Diario">
+              <PropertyRef Name="IDPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EAD_Diario">
+          <End Role="Diario" Type="Self.Diario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EstadoAnimicoDiario" Type="Self.EstadoAnimicoDiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EstadoAnimicoDiario">
+              <PropertyRef Name="IDDiario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EAD_EA">
+          <End Role="EstadoAnimicoTipo" Type="Self.EstadoAnimicoTipo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EstadoAnimicoDiario" Type="Self.EstadoAnimicoDiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoAnimicoTipo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EstadoAnimicoDiario">
+              <PropertyRef Name="IDEstadoAnimico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paciente_Centro">
+          <End Role="Centro" Type="Self.Centro" Multiplicity="0..1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Centro">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="IDCentro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paciente_ObjetivoTipo">
+          <End Role="ObjetivoTipo" Type="Self.ObjetivoTipo" Multiplicity="0..1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjetivoTipo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="IDObjetivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paciente_PacienteMedidas">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PacienteMedidas" Type="Self.PacienteMedidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="IDUsuario" />
+            </Principal>
+            <Dependent Role="PacienteMedidas">
+              <PropertyRef Name="IDPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paciente_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Provincias_ComunidadAutonoma">
+          <End Role="ComunidadAutonoma" Type="Self.ComunidadAutonoma" Multiplicity="1" />
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComunidadAutonoma">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Provincia">
+              <PropertyRef Name="IDCCAA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PT_Centro">
+          <End Role="Centro" Type="Self.Centro" Multiplicity="1" />
+          <End Role="PuestoTrabajador" Type="Self.PuestoTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Centro">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PuestoTrabajador">
+              <PropertyRef Name="IDCentro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PT_Puestos">
+          <End Role="Puesto" Type="Self.Puesto" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PuestoTrabajador" Type="Self.PuestoTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puesto">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PuestoTrabajador">
+              <PropertyRef Name="IDPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PT_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="PuestoTrabajador" Type="Self.PuestoTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PuestoTrabajador">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RA_Accion">
+          <End Role="Accion" Type="Self.Accion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rol_Accion" Type="Self.Rol_Accion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accion">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rol_Accion">
+              <PropertyRef Name="IDAccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RA_Rol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rol_Accion" Type="Self.Rol_Accion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rol_Accion">
+              <PropertyRef Name="IDRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trabajador_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trabajador">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrabajadoresNB_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="TrabajadoresNB" Type="Self.TrabajadoresNB" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TrabajadoresNB">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IDProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Rol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IDRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NutribuddyModelStoreContainer">
+          <EntitySet Name="Accion" EntityType="Self.Accion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Centro" EntityType="Self.Centro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CentroTrabajador" EntityType="Self.CentroTrabajador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cita" EntityType="Self.Cita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comida" EntityType="Self.Comida" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComidaTipo" EntityType="Self.ComidaTipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComunidadAutonoma" EntityType="Self.ComunidadAutonoma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacto" EntityType="Self.Contacto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deporte" EntityType="Self.Deporte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeporteTipo" EntityType="Self.DeporteTipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diario" EntityType="Self.Diario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoAnimicoDiario" EntityType="Self.EstadoAnimicoDiario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoAnimicoTipo" EntityType="Self.EstadoAnimicoTipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ObjetivoTipo" EntityType="Self.ObjetivoTipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OpcionesDiarioTipo" EntityType="Self.OpcionesDiarioTipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PacienteMedidas" EntityType="Self.PacienteMedidas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plan" EntityType="Self.Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Puesto" EntityType="Self.Puesto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PuestoTrabajador" EntityType="Self.PuestoTrabajador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol_Accion" EntityType="Self.Rol_Accion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trabajador" EntityType="Self.Trabajador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrabajadoresNB" EntityType="Self.TrabajadoresNB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Acciones_Acciones" Association="Self.FK_Acciones_Acciones">
+            <End Role="Accion" EntitySet="Accion" />
+            <End Role="Accion1" EntitySet="Accion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Centro_Plan" Association="Self.FK_Centro_Plan">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="Centro" EntitySet="Centro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Centro_Provincia" Association="Self.FK_Centro_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Centro" EntitySet="Centro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Centro_Usuario" Association="Self.FK_Centro_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Centro" EntitySet="Centro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cita_Centro" Association="Self.FK_Cita_Centro">
+            <End Role="Centro" EntitySet="Centro" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cita_Paciente" Association="Self.FK_Cita_Paciente">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cita_Puesto" Association="Self.FK_Cita_Puesto">
+            <End Role="Puesto" EntitySet="Puesto" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cita_TC" Association="Self.FK_Cita_TC">
+            <End Role="Trabajador" EntitySet="Trabajador" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comida_Diario" Association="Self.FK_Comida_Diario">
+            <End Role="Diario" EntitySet="Diario" />
+            <End Role="Comida" EntitySet="Comida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comida_TipoComida" Association="Self.FK_Comida_TipoComida">
+            <End Role="ComidaTipo" EntitySet="ComidaTipo" />
+            <End Role="Comida" EntitySet="Comida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_Centro" Association="Self.FK_CT_Centro">
+            <End Role="Centro" EntitySet="Centro" />
+            <End Role="CentroTrabajador" EntitySet="CentroTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_Trabajador" Association="Self.FK_CT_Trabajador">
+            <End Role="Trabajador" EntitySet="Trabajador" />
+            <End Role="CentroTrabajador" EntitySet="CentroTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deporte_Diario" Association="Self.FK_Deporte_Diario">
+            <End Role="Diario" EntitySet="Diario" />
+            <End Role="Deporte" EntitySet="Deporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deporte_DTipo" Association="Self.FK_Deporte_DTipo">
+            <End Role="DeporteTipo" EntitySet="DeporteTipo" />
+            <End Role="Deporte" EntitySet="Deporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diario_Medidas" Association="Self.FK_Diario_Medidas">
+            <End Role="PacienteMedidas" EntitySet="PacienteMedidas" />
+            <End Role="Diario" EntitySet="Diario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diario_OpDiario1" Association="Self.FK_Diario_OpDiario1">
+            <End Role="OpcionesDiarioTipo" EntitySet="OpcionesDiarioTipo" />
+            <End Role="Diario" EntitySet="Diario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diario_OpDiario2" Association="Self.FK_Diario_OpDiario2">
+            <End Role="OpcionesDiarioTipo" EntitySet="OpcionesDiarioTipo" />
+            <End Role="Diario" EntitySet="Diario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diario_Paciente" Association="Self.FK_Diario_Paciente">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Diario" EntitySet="Diario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EAD_Diario" Association="Self.FK_EAD_Diario">
+            <End Role="Diario" EntitySet="Diario" />
+            <End Role="EstadoAnimicoDiario" EntitySet="EstadoAnimicoDiario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EAD_EA" Association="Self.FK_EAD_EA">
+            <End Role="EstadoAnimicoTipo" EntitySet="EstadoAnimicoTipo" />
+            <End Role="EstadoAnimicoDiario" EntitySet="EstadoAnimicoDiario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paciente_Centro" Association="Self.FK_Paciente_Centro">
+            <End Role="Centro" EntitySet="Centro" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paciente_ObjetivoTipo" Association="Self.FK_Paciente_ObjetivoTipo">
+            <End Role="ObjetivoTipo" EntitySet="ObjetivoTipo" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paciente_PacienteMedidas" Association="Self.FK_Paciente_PacienteMedidas">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="PacienteMedidas" EntitySet="PacienteMedidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paciente_Usuario" Association="Self.FK_Paciente_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Provincias_ComunidadAutonoma" Association="Self.FK_Provincias_ComunidadAutonoma">
+            <End Role="ComunidadAutonoma" EntitySet="ComunidadAutonoma" />
+            <End Role="Provincia" EntitySet="Provincia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PT_Centro" Association="Self.FK_PT_Centro">
+            <End Role="Centro" EntitySet="Centro" />
+            <End Role="PuestoTrabajador" EntitySet="PuestoTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PT_Puestos" Association="Self.FK_PT_Puestos">
+            <End Role="Puesto" EntitySet="Puesto" />
+            <End Role="PuestoTrabajador" EntitySet="PuestoTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PT_Usuario" Association="Self.FK_PT_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="PuestoTrabajador" EntitySet="PuestoTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_Accion" Association="Self.FK_RA_Accion">
+            <End Role="Accion" EntitySet="Accion" />
+            <End Role="Rol_Accion" EntitySet="Rol_Accion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_Rol" Association="Self.FK_RA_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Rol_Accion" EntitySet="Rol_Accion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trabajador_Usuario" Association="Self.FK_Trabajador_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Trabajador" EntitySet="Trabajador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrabajadoresNB_Usuario" Association="Self.FK_TrabajadoresNB_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="TrabajadoresNB" EntitySet="TrabajadoresNB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Provincia" Association="Self.FK_Usuario_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NutribuddyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="NutribuddyEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Accion" EntityType="NutribuddyModel.Accion" />
+          <EntitySet Name="Rol" EntityType="NutribuddyModel.Rol" />
+          <EntitySet Name="Rol_Accion" EntityType="NutribuddyModel.Rol_Accion" />
+          <EntitySet Name="Usuario" EntityType="NutribuddyModel.Usuario" />
+          <AssociationSet Name="FK_Acciones_Acciones" Association="NutribuddyModel.FK_Acciones_Acciones">
+            <End Role="Accion" EntitySet="Accion" />
+            <End Role="Accion1" EntitySet="Accion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_Accion" Association="NutribuddyModel.FK_RA_Accion">
+            <End Role="Accion" EntitySet="Accion" />
+            <End Role="Rol_Accion" EntitySet="Rol_Accion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_Rol" Association="NutribuddyModel.FK_RA_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Rol_Accion" EntitySet="Rol_Accion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Rol" Association="NutribuddyModel.FK_Usuario_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <EntitySet Name="ComunidadAutonoma" EntityType="NutribuddyModel.ComunidadAutonoma" />
+          <EntitySet Name="Provincia" EntityType="NutribuddyModel.Provincia" />
+          <AssociationSet Name="FK_Provincias_ComunidadAutonoma" Association="NutribuddyModel.FK_Provincias_ComunidadAutonoma">
+            <End Role="ComunidadAutonoma" EntitySet="ComunidadAutonoma" />
+            <End Role="Provincia" EntitySet="Provincia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Provincia" Association="NutribuddyModel.FK_Usuario_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <EntitySet Name="Plan" EntityType="NutribuddyModel.Plan" />
+          <EntitySet Name="Puesto" EntityType="NutribuddyModel.Puesto" />
+          <EntitySet Name="Contacto" EntityType="NutribuddyModel.Contacto" />
+          <EntitySet Name="TrabajadoresNB" EntityType="NutribuddyModel.TrabajadoresNB" />
+          <AssociationSet Name="FK_TrabajadoresNB_Usuario" Association="NutribuddyModel.FK_TrabajadoresNB_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="TrabajadoresNB" EntitySet="TrabajadoresNB" />
+          </AssociationSet>
+          <EntitySet Name="Trabajador" EntityType="NutribuddyModel.Trabajador" />
+          <AssociationSet Name="FK_Trabajador_Usuario" Association="NutribuddyModel.FK_Trabajador_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Trabajador" EntitySet="Trabajador" />
+          </AssociationSet>
+          <EntitySet Name="CentroTrabajador" EntityType="NutribuddyModel.CentroTrabajador" />
+          <AssociationSet Name="FK_CT_Trabajador" Association="NutribuddyModel.FK_CT_Trabajador">
+            <End Role="Trabajador" EntitySet="Trabajador" />
+            <End Role="CentroTrabajador" EntitySet="CentroTrabajador" />
+          </AssociationSet>
+          <EntitySet Name="PuestoTrabajador" EntityType="NutribuddyModel.PuestoTrabajador" />
+          <AssociationSet Name="FK_PT_Puestos" Association="NutribuddyModel.FK_PT_Puestos">
+            <End Role="Puesto" EntitySet="Puesto" />
+            <End Role="PuestoTrabajador" EntitySet="PuestoTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PT_Usuario" Association="NutribuddyModel.FK_PT_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="PuestoTrabajador" EntitySet="PuestoTrabajador" />
+          </AssociationSet>
+          <EntitySet Name="Centro" EntityType="NutribuddyModel.Centro" />
+          <AssociationSet Name="FK_Centro_Plan" Association="NutribuddyModel.FK_Centro_Plan">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="Centro" EntitySet="Centro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Centro_Provincia" Association="NutribuddyModel.FK_Centro_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Centro" EntitySet="Centro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Centro_Usuario" Association="NutribuddyModel.FK_Centro_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Centro" EntitySet="Centro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_Centro" Association="NutribuddyModel.FK_CT_Centro">
+            <End Role="Centro" EntitySet="Centro" />
+            <End Role="CentroTrabajador" EntitySet="CentroTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PT_Centro" Association="NutribuddyModel.FK_PT_Centro">
+            <End Role="Centro" EntitySet="Centro" />
+            <End Role="PuestoTrabajador" EntitySet="PuestoTrabajador" />
+          </AssociationSet>
+          <EntitySet Name="ComidaTipo" EntityType="NutribuddyModel.ComidaTipo" />
+          <EntitySet Name="DeporteTipo" EntityType="NutribuddyModel.DeporteTipo" />
+          <EntitySet Name="EstadoAnimicoDiario" EntityType="NutribuddyModel.EstadoAnimicoDiario" />
+          <EntitySet Name="EstadoAnimicoTipo" EntityType="NutribuddyModel.EstadoAnimicoTipo" />
+          <AssociationSet Name="FK_EAD_EA" Association="NutribuddyModel.FK_EAD_EA">
+            <End Role="EstadoAnimicoTipo" EntitySet="EstadoAnimicoTipo" />
+            <End Role="EstadoAnimicoDiario" EntitySet="EstadoAnimicoDiario" />
+          </AssociationSet>
+          <EntitySet Name="ObjetivoTipo" EntityType="NutribuddyModel.ObjetivoTipo" />
+          <EntitySet Name="OpcionesDiarioTipo" EntityType="NutribuddyModel.OpcionesDiarioTipo" />
+          <EntitySet Name="Paciente" EntityType="NutribuddyModel.Paciente" />
+          <AssociationSet Name="FK_Paciente_Centro" Association="NutribuddyModel.FK_Paciente_Centro">
+            <End Role="Centro" EntitySet="Centro" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paciente_ObjetivoTipo" Association="NutribuddyModel.FK_Paciente_ObjetivoTipo">
+            <End Role="ObjetivoTipo" EntitySet="ObjetivoTipo" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paciente_Usuario" Association="NutribuddyModel.FK_Paciente_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <EntitySet Name="Diario" EntityType="NutribuddyModel.Diario" />
+          <AssociationSet Name="FK_Diario_OpDiario1" Association="NutribuddyModel.FK_Diario_OpDiario1">
+            <End Role="OpcionesDiarioTipo" EntitySet="OpcionesDiarioTipo" />
+            <End Role="Diario" EntitySet="Diario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diario_OpDiario2" Association="NutribuddyModel.FK_Diario_OpDiario2">
+            <End Role="OpcionesDiarioTipo" EntitySet="OpcionesDiarioTipo" />
+            <End Role="Diario" EntitySet="Diario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diario_Paciente" Association="NutribuddyModel.FK_Diario_Paciente">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Diario" EntitySet="Diario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EAD_Diario" Association="NutribuddyModel.FK_EAD_Diario">
+            <End Role="Diario" EntitySet="Diario" />
+            <End Role="EstadoAnimicoDiario" EntitySet="EstadoAnimicoDiario" />
+          </AssociationSet>
+          <EntitySet Name="Deporte" EntityType="NutribuddyModel.Deporte" />
+          <AssociationSet Name="FK_Deporte_Diario" Association="NutribuddyModel.FK_Deporte_Diario">
+            <End Role="Diario" EntitySet="Diario" />
+            <End Role="Deporte" EntitySet="Deporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deporte_DTipo" Association="NutribuddyModel.FK_Deporte_DTipo">
+            <End Role="DeporteTipo" EntitySet="DeporteTipo" />
+            <End Role="Deporte" EntitySet="Deporte" />
+          </AssociationSet>
+          <EntitySet Name="Comida" EntityType="NutribuddyModel.Comida" />
+          <AssociationSet Name="FK_Comida_Diario" Association="NutribuddyModel.FK_Comida_Diario">
+            <End Role="Diario" EntitySet="Diario" />
+            <End Role="Comida" EntitySet="Comida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comida_TipoComida" Association="NutribuddyModel.FK_Comida_TipoComida">
+            <End Role="ComidaTipo" EntitySet="ComidaTipo" />
+            <End Role="Comida" EntitySet="Comida" />
+          </AssociationSet>
+          <EntitySet Name="PacienteMedidas" EntityType="NutribuddyModel.PacienteMedidas" />
+          <AssociationSet Name="FK_Diario_Medidas" Association="NutribuddyModel.FK_Diario_Medidas">
+            <End Role="PacienteMedidas" EntitySet="PacienteMedidas" />
+            <End Role="Diario" EntitySet="Diario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paciente_PacienteMedidas" Association="NutribuddyModel.FK_Paciente_PacienteMedidas">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="PacienteMedidas" EntitySet="PacienteMedidas" />
+          </AssociationSet>
+          <EntitySet Name="Cita" EntityType="NutribuddyModel.Cita" />
+          <AssociationSet Name="FK_Cita_Centro" Association="NutribuddyModel.FK_Cita_Centro">
+            <End Role="Centro" EntitySet="Centro" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cita_Paciente" Association="NutribuddyModel.FK_Cita_Paciente">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cita_Puesto" Association="NutribuddyModel.FK_Cita_Puesto">
+            <End Role="Puesto" EntitySet="Puesto" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cita_TC" Association="NutribuddyModel.FK_Cita_TC">
+            <End Role="Trabajador" EntitySet="Trabajador" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Accion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPadre" Type="Int32" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Accion1" Relationship="NutribuddyModel.FK_Acciones_Acciones" FromRole="Accion" ToRole="Accion1" />
+          <NavigationProperty Name="Accion2" Relationship="NutribuddyModel.FK_Acciones_Acciones" FromRole="Accion1" ToRole="Accion" />
+          <NavigationProperty Name="Rol_Accion" Relationship="NutribuddyModel.FK_RA_Accion" FromRole="Accion" ToRole="Rol_Accion" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Rol_Accion" Relationship="NutribuddyModel.FK_RA_Rol" FromRole="Rol" ToRole="Rol_Accion" />
+          <NavigationProperty Name="Usuario" Relationship="NutribuddyModel.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Rol_Accion">
+          <Key>
+            <PropertyRef Name="IDRol" />
+            <PropertyRef Name="IDAccion" />
+          </Key>
+          <Property Name="IDRol" Type="Int32" Nullable="false" />
+          <Property Name="IDAccion" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Accion" Relationship="NutribuddyModel.FK_RA_Accion" FromRole="Rol_Accion" ToRole="Accion" />
+          <NavigationProperty Name="Rol" Relationship="NutribuddyModel.FK_RA_Rol" FromRole="Rol_Accion" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDRol" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaBaja" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Rol" Relationship="NutribuddyModel.FK_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
+          <Property Name="IDProvincia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Provincia" Relationship="NutribuddyModel.FK_Usuario_Provincia" FromRole="Usuario" ToRole="Provincia" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Apellidos" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TrabajadoresNB" Relationship="NutribuddyModel.FK_TrabajadoresNB_Usuario" FromRole="Usuario" ToRole="TrabajadoresNB" />
+          <NavigationProperty Name="Trabajador" Relationship="NutribuddyModel.FK_Trabajador_Usuario" FromRole="Usuario" ToRole="Trabajador" />
+          <NavigationProperty Name="PuestoTrabajador" Relationship="NutribuddyModel.FK_PT_Usuario" FromRole="Usuario" ToRole="PuestoTrabajador" />
+          <Property Name="CodigoRecuperacion" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="FechaCodigoRecuperacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Centro" Relationship="NutribuddyModel.FK_Centro_Usuario" FromRole="Usuario" ToRole="Centro" />
+          <NavigationProperty Name="Paciente" Relationship="NutribuddyModel.FK_Paciente_Usuario" FromRole="Usuario" ToRole="Paciente" />
+          </EntityType>
+        <Association Name="FK_Acciones_Acciones">
+          <End Type="NutribuddyModel.Accion" Role="Accion" Multiplicity="0..1" />
+          <End Type="NutribuddyModel.Accion" Role="Accion1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accion">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accion1">
+              <PropertyRef Name="IDPadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RA_Accion">
+          <End Type="NutribuddyModel.Accion" Role="Accion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NutribuddyModel.Rol_Accion" Role="Rol_Accion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accion">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rol_Accion">
+              <PropertyRef Name="IDAccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RA_Rol">
+          <End Type="NutribuddyModel.Rol" Role="Rol" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NutribuddyModel.Rol_Accion" Role="Rol_Accion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rol_Accion">
+              <PropertyRef Name="IDRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Rol">
+          <End Type="NutribuddyModel.Rol" Role="Rol" Multiplicity="1" />
+          <End Type="NutribuddyModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IDRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ComunidadAutonoma">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Provincia" Relationship="NutribuddyModel.FK_Provincias_ComunidadAutonoma" FromRole="ComunidadAutonoma" ToRole="Provincia" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IDCCAA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ComunidadAutonoma" Relationship="NutribuddyModel.FK_Provincias_ComunidadAutonoma" FromRole="Provincia" ToRole="ComunidadAutonoma" />
+          <NavigationProperty Name="Usuario" Relationship="NutribuddyModel.FK_Usuario_Provincia" FromRole="Provincia" ToRole="Usuario" />
+          <NavigationProperty Name="Centro" Relationship="NutribuddyModel.FK_Centro_Provincia" FromRole="Provincia" ToRole="Centro" />
+        </EntityType>
+        <Association Name="FK_Provincias_ComunidadAutonoma">
+          <End Type="NutribuddyModel.ComunidadAutonoma" Role="ComunidadAutonoma" Multiplicity="1" />
+          <End Type="NutribuddyModel.Provincia" Role="Provincia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComunidadAutonoma">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Provincia">
+              <PropertyRef Name="IDCCAA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Provincia">
+          <End Type="NutribuddyModel.Provincia" Role="Provincia" Multiplicity="1" />
+          <End Type="NutribuddyModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IDProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="IDPlanSucesor" Type="Int32" />
+          <Property Name="MaxTrabajadores" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Centro" Relationship="NutribuddyModel.FK_Centro_Plan" FromRole="Plan" ToRole="Centro" />
+        </EntityType>
+        <EntityType Name="Puesto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PuestoTrabajador" Relationship="NutribuddyModel.FK_PT_Puestos" FromRole="Puesto" ToRole="PuestoTrabajador" />
+          <Property Name="colorAgenda" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cita" Relationship="NutribuddyModel.FK_Cita_Puesto" FromRole="Puesto" ToRole="Cita" />
+        </EntityType>
+        <EntityType Name="Contacto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="EsCentro" Type="Boolean" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Comentario" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FechaEnvio" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TrabajadoresNB">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+          <Property Name="NumSegSocial" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaBaja" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Usuario" Relationship="NutribuddyModel.FK_TrabajadoresNB_Usuario" FromRole="TrabajadoresNB" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_TrabajadoresNB_Usuario">
+          <End Type="NutribuddyModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="NutribuddyModel.TrabajadoresNB" Role="TrabajadoresNB" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TrabajadoresNB">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Trabajador">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+          <Property Name="NumSegSocial" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaBaja" Type="DateTime" Precision="3" />
+          <Property Name="DNI" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Nacionalidad" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Localidad" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Usuario" Relationship="NutribuddyModel.FK_Trabajador_Usuario" FromRole="Trabajador" ToRole="Usuario" />
+          <NavigationProperty Name="CentroTrabajador" Relationship="NutribuddyModel.FK_CT_Trabajador" FromRole="Trabajador" ToRole="CentroTrabajador" />
+          <NavigationProperty Name="Cita" Relationship="NutribuddyModel.FK_Cita_TC" FromRole="Trabajador" ToRole="Cita" />
+        </EntityType>
+        <Association Name="FK_Trabajador_Usuario">
+          <End Type="NutribuddyModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="NutribuddyModel.Trabajador" Role="Trabajador" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trabajador">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CentroTrabajador">
+          <Key>
+            <PropertyRef Name="IDTrabajador" />
+            <PropertyRef Name="IDCentro" />
+          </Key>
+          <Property Name="IDTrabajador" Type="Int32" Nullable="false" />
+          <Property Name="IDCentro" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Trabajador" Relationship="NutribuddyModel.FK_CT_Trabajador" FromRole="CentroTrabajador" ToRole="Trabajador" />
+          <NavigationProperty Name="Centro" Relationship="NutribuddyModel.FK_CT_Centro" FromRole="CentroTrabajador" ToRole="Centro" />
+        </EntityType>
+        <Association Name="FK_CT_Trabajador">
+          <End Type="NutribuddyModel.Trabajador" Role="Trabajador" Multiplicity="1" />
+          <End Type="NutribuddyModel.CentroTrabajador" Role="CentroTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trabajador">
+              <PropertyRef Name="IDUsuario" />
+            </Principal>
+            <Dependent Role="CentroTrabajador">
+              <PropertyRef Name="IDTrabajador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PuestoTrabajador">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+            <PropertyRef Name="IDPuesto" />
+            <PropertyRef Name="IDCentro" />
+          </Key>
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IDPuesto" Type="Int32" Nullable="false" />
+          <Property Name="IDCentro" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Puesto" Relationship="NutribuddyModel.FK_PT_Puestos" FromRole="PuestoTrabajador" ToRole="Puesto" />
+          <NavigationProperty Name="Usuario" Relationship="NutribuddyModel.FK_PT_Usuario" FromRole="PuestoTrabajador" ToRole="Usuario" />
+          <NavigationProperty Name="Centro" Relationship="NutribuddyModel.FK_PT_Centro" FromRole="PuestoTrabajador" ToRole="Centro" />
+        </EntityType>
+        <Association Name="FK_PT_Puestos">
+          <End Type="NutribuddyModel.Puesto" Role="Puesto" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NutribuddyModel.PuestoTrabajador" Role="PuestoTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puesto">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PuestoTrabajador">
+              <PropertyRef Name="IDPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PT_Usuario">
+          <End Type="NutribuddyModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="NutribuddyModel.PuestoTrabajador" Role="PuestoTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PuestoTrabajador">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Centro">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDUsuarioAdminitrador" Type="Int32" />
+          <Property Name="IDPlan" Type="Int32" Nullable="false" />
+          <Property Name="CIF" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="NombreCentro" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IDProvincia" Type="Int32" Nullable="false" />
+          <Property Name="Localidad" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CP" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaBaja" Type="DateTime" Precision="3" />
+          <Property Name="MotivoBaja" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="EsPresencial" Type="Boolean" Nullable="false" />
+          <Property Name="EsOnline" Type="Boolean" Nullable="false" />
+          <Property Name="Website" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Plan" Relationship="NutribuddyModel.FK_Centro_Plan" FromRole="Centro" ToRole="Plan" />
+          <NavigationProperty Name="Provincia" Relationship="NutribuddyModel.FK_Centro_Provincia" FromRole="Centro" ToRole="Provincia" />
+          <NavigationProperty Name="Usuario" Relationship="NutribuddyModel.FK_Centro_Usuario" FromRole="Centro" ToRole="Usuario" />
+          <NavigationProperty Name="CentroTrabajador" Relationship="NutribuddyModel.FK_CT_Centro" FromRole="Centro" ToRole="CentroTrabajador" />
+          <NavigationProperty Name="PuestoTrabajador" Relationship="NutribuddyModel.FK_PT_Centro" FromRole="Centro" ToRole="PuestoTrabajador" />
+          <Property Name="MaxTrabajadores" Type="Int32" Nullable="false" />
+          <Property Name="TrabajadoresActuales" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Paciente" Relationship="NutribuddyModel.FK_Paciente_Centro" FromRole="Centro" ToRole="Paciente" />
+          <NavigationProperty Name="Cita" Relationship="NutribuddyModel.FK_Cita_Centro" FromRole="Centro" ToRole="Cita" />
+        </EntityType>
+        <Association Name="FK_Centro_Plan">
+          <End Type="NutribuddyModel.Plan" Role="Plan" Multiplicity="1" />
+          <End Type="NutribuddyModel.Centro" Role="Centro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Centro">
+              <PropertyRef Name="IDPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Centro_Provincia">
+          <End Type="NutribuddyModel.Provincia" Role="Provincia" Multiplicity="1" />
+          <End Type="NutribuddyModel.Centro" Role="Centro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Centro">
+              <PropertyRef Name="IDProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Centro_Usuario">
+          <End Type="NutribuddyModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="NutribuddyModel.Centro" Role="Centro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Centro">
+              <PropertyRef Name="IDUsuarioAdminitrador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CT_Centro">
+          <End Type="NutribuddyModel.Centro" Role="Centro" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NutribuddyModel.CentroTrabajador" Role="CentroTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Centro">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CentroTrabajador">
+              <PropertyRef Name="IDCentro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PT_Centro">
+          <End Type="NutribuddyModel.Centro" Role="Centro" Multiplicity="1" />
+          <End Type="NutribuddyModel.PuestoTrabajador" Role="PuestoTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Centro">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PuestoTrabajador">
+              <PropertyRef Name="IDCentro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ComidaTipo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NombreEN" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Comida" Relationship="NutribuddyModel.FK_Comida_TipoComida" FromRole="ComidaTipo" ToRole="Comida" />
+        </EntityType>
+        <EntityType Name="DeporteTipo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NombreEN" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Deporte" Relationship="NutribuddyModel.FK_Deporte_DTipo" FromRole="DeporteTipo" ToRole="Deporte" />
+        </EntityType>
+        <EntityType Name="EstadoAnimicoDiario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDiario" Type="Int32" Nullable="false" />
+          <Property Name="IDEstadoAnimico" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EstadoAnimicoTipo" Relationship="NutribuddyModel.FK_EAD_EA" FromRole="EstadoAnimicoDiario" ToRole="EstadoAnimicoTipo" />
+          <NavigationProperty Name="Diario" Relationship="NutribuddyModel.FK_EAD_Diario" FromRole="EstadoAnimicoDiario" ToRole="Diario" />
+        </EntityType>
+        <EntityType Name="EstadoAnimicoTipo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NombreEN" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EstadoAnimicoDiario" Relationship="NutribuddyModel.FK_EAD_EA" FromRole="EstadoAnimicoTipo" ToRole="EstadoAnimicoDiario" />
+        </EntityType>
+        <Association Name="FK_EAD_EA">
+          <End Type="NutribuddyModel.EstadoAnimicoTipo" Role="EstadoAnimicoTipo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NutribuddyModel.EstadoAnimicoDiario" Role="EstadoAnimicoDiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoAnimicoTipo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EstadoAnimicoDiario">
+              <PropertyRef Name="IDEstadoAnimico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ObjetivoTipo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NombreEN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Paciente" Relationship="NutribuddyModel.FK_Paciente_ObjetivoTipo" FromRole="ObjetivoTipo" ToRole="Paciente" />
+        </EntityType>
+        <EntityType Name="OpcionesDiarioTipo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NombreEN" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Diario" Relationship="NutribuddyModel.FK_Diario_OpDiario1" FromRole="OpcionesDiarioTipo" ToRole="Diario" />
+          <NavigationProperty Name="Diario1" Relationship="NutribuddyModel.FK_Diario_OpDiario2" FromRole="OpcionesDiarioTipo" ToRole="Diario" />
+          </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+          <Property Name="DNI" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="EsHombre" Type="Boolean" Nullable="false" />
+          <Property Name="IDCentro" Type="Int32" />
+          <Property Name="FormularioInicial" Type="Boolean" Nullable="false" />
+          <Property Name="EsSedentario" Type="Boolean" Nullable="false" />
+          <Property Name="IDObjetivo" Type="Int32" />
+          <Property Name="BajaAutoestima" Type="Boolean" Nullable="false" />
+          <Property Name="TieneEstres" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Centro" Relationship="NutribuddyModel.FK_Paciente_Centro" FromRole="Paciente" ToRole="Centro" />
+          <NavigationProperty Name="ObjetivoTipo" Relationship="NutribuddyModel.FK_Paciente_ObjetivoTipo" FromRole="Paciente" ToRole="ObjetivoTipo" />
+          <NavigationProperty Name="Usuario" Relationship="NutribuddyModel.FK_Paciente_Usuario" FromRole="Paciente" ToRole="Usuario" />
+          <NavigationProperty Name="Diario" Relationship="NutribuddyModel.FK_Diario_Paciente" FromRole="Paciente" ToRole="Diario" />
+          <NavigationProperty Name="PacienteMedidas" Relationship="NutribuddyModel.FK_Paciente_PacienteMedidas" FromRole="Paciente" ToRole="PacienteMedidas" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cita" Relationship="NutribuddyModel.FK_Cita_Paciente" FromRole="Paciente" ToRole="Cita" />
+        </EntityType>
+        <Association Name="FK_Paciente_Centro">
+          <End Type="NutribuddyModel.Centro" Role="Centro" Multiplicity="0..1" />
+          <End Type="NutribuddyModel.Paciente" Role="Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Centro">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="IDCentro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paciente_ObjetivoTipo">
+          <End Type="NutribuddyModel.ObjetivoTipo" Role="ObjetivoTipo" Multiplicity="0..1" />
+          <End Type="NutribuddyModel.Paciente" Role="Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjetivoTipo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="IDObjetivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paciente_Usuario">
+          <End Type="NutribuddyModel.Usuario" Role="Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NutribuddyModel.Paciente" Role="Paciente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Diario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPaciente" Type="Int32" Nullable="false" />
+          <Property Name="Dia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AguaCantidad" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="Medicamentos" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Menstruaccion" Type="Boolean" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="IDSuenyo" Type="Int32" />
+          <Property Name="IDEstado" Type="Int32" />
+          <Property Name="Deporte" Type="Boolean" Nullable="false" />
+          <Property Name="ObsDeporte" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OpcionesDiarioTipo" Relationship="NutribuddyModel.FK_Diario_OpDiario1" FromRole="Diario" ToRole="OpcionesDiarioTipo" />
+          <NavigationProperty Name="OpcionesDiarioTipo1" Relationship="NutribuddyModel.FK_Diario_OpDiario2" FromRole="Diario" ToRole="OpcionesDiarioTipo" />
+          <NavigationProperty Name="Paciente" Relationship="NutribuddyModel.FK_Diario_Paciente" FromRole="Diario" ToRole="Paciente" />
+          <NavigationProperty Name="EstadoAnimicoDiario" Relationship="NutribuddyModel.FK_EAD_Diario" FromRole="Diario" ToRole="EstadoAnimicoDiario" />
+          <NavigationProperty Name="Deporte1" Relationship="NutribuddyModel.FK_Deporte_Diario" FromRole="Diario" ToRole="Deporte" />
+          <NavigationProperty Name="Comida" Relationship="NutribuddyModel.FK_Comida_Diario" FromRole="Diario" ToRole="Comida" />
+          <Property Name="IDMedidas" Type="Int32" />
+          <NavigationProperty Name="PacienteMedidas" Relationship="NutribuddyModel.FK_Diario_Medidas" FromRole="Diario" ToRole="PacienteMedidas" />
+          </EntityType>
+        <Association Name="FK_Diario_OpDiario1">
+          <End Type="NutribuddyModel.OpcionesDiarioTipo" Role="OpcionesDiarioTipo" Multiplicity="0..1" />
+          <End Type="NutribuddyModel.Diario" Role="Diario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OpcionesDiarioTipo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Diario">
+              <PropertyRef Name="IDEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diario_OpDiario2">
+          <End Type="NutribuddyModel.OpcionesDiarioTipo" Role="OpcionesDiarioTipo" Multiplicity="0..1" />
+          <End Type="NutribuddyModel.Diario" Role="Diario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OpcionesDiarioTipo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Diario">
+              <PropertyRef Name="IDSuenyo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diario_Paciente">
+          <End Type="NutribuddyModel.Paciente" Role="Paciente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NutribuddyModel.Diario" Role="Diario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="IDUsuario" />
+            </Principal>
+            <Dependent Role="Diario">
+              <PropertyRef Name="IDPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EAD_Diario">
+          <End Type="NutribuddyModel.Diario" Role="Diario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NutribuddyModel.EstadoAnimicoDiario" Role="EstadoAnimicoDiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EstadoAnimicoDiario">
+              <PropertyRef Name="IDDiario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Deporte">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDiario" Type="Int32" Nullable="false" />
+          <Property Name="IDTipoDeporte" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Diario" Relationship="NutribuddyModel.FK_Deporte_Diario" FromRole="Deporte" ToRole="Diario" />
+          <NavigationProperty Name="DeporteTipo" Relationship="NutribuddyModel.FK_Deporte_DTipo" FromRole="Deporte" ToRole="DeporteTipo" />
+        </EntityType>
+        <Association Name="FK_Deporte_Diario">
+          <End Type="NutribuddyModel.Diario" Role="Diario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NutribuddyModel.Deporte" Role="Deporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deporte">
+              <PropertyRef Name="IDDiario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deporte_DTipo">
+          <End Type="NutribuddyModel.DeporteTipo" Role="DeporteTipo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NutribuddyModel.Deporte" Role="Deporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeporteTipo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deporte">
+              <PropertyRef Name="IDTipoDeporte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Comida">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDiario" Type="Int32" Nullable="false" />
+          <Property Name="IDTipoComida" Type="Int32" Nullable="false" />
+          <Property Name="Alimentos" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Dia" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Diario" Relationship="NutribuddyModel.FK_Comida_Diario" FromRole="Comida" ToRole="Diario" />
+          <NavigationProperty Name="ComidaTipo" Relationship="NutribuddyModel.FK_Comida_TipoComida" FromRole="Comida" ToRole="ComidaTipo" />
+        </EntityType>
+        <Association Name="FK_Comida_Diario">
+          <End Type="NutribuddyModel.Diario" Role="Diario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NutribuddyModel.Comida" Role="Comida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comida">
+              <PropertyRef Name="IDDiario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comida_TipoComida">
+          <End Type="NutribuddyModel.ComidaTipo" Role="ComidaTipo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NutribuddyModel.Comida" Role="Comida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComidaTipo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comida">
+              <PropertyRef Name="IDTipoComida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PacienteMedidas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPaciente" Type="Int32" Nullable="false" />
+          <Property Name="Altura" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Peso" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="CmPecho" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="CmCintura" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="CmCadera" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PGrasa" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PMagro" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PAgua" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Diario" Relationship="NutribuddyModel.FK_Diario_Medidas" FromRole="PacienteMedidas" ToRole="Diario" />
+          <NavigationProperty Name="Paciente" Relationship="NutribuddyModel.FK_Paciente_PacienteMedidas" FromRole="PacienteMedidas" ToRole="Paciente" />
+        </EntityType>
+        <Association Name="FK_Diario_Medidas">
+          <End Type="NutribuddyModel.PacienteMedidas" Role="PacienteMedidas" Multiplicity="0..1" />
+          <End Type="NutribuddyModel.Diario" Role="Diario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PacienteMedidas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Diario">
+              <PropertyRef Name="IDMedidas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paciente_PacienteMedidas">
+          <End Type="NutribuddyModel.Paciente" Role="Paciente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NutribuddyModel.PacienteMedidas" Role="PacienteMedidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="IDUsuario" />
+            </Principal>
+            <Dependent Role="PacienteMedidas">
+              <PropertyRef Name="IDPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cita">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDTipo" Type="Int32" Nullable="false" />
+          <Property Name="IDTrabajador" Type="Int32" Nullable="false" />
+          <Property Name="IDPaciente" Type="Int32" Nullable="false" />
+          <Property Name="HoraInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HoraFin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Titulo" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IDCentro" Type="Int32" Nullable="false" />
+          <Property Name="NotasPrivadas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PautasPaciente" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Completada" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Centro" Relationship="NutribuddyModel.FK_Cita_Centro" FromRole="Cita" ToRole="Centro" />
+          <NavigationProperty Name="Paciente" Relationship="NutribuddyModel.FK_Cita_Paciente" FromRole="Cita" ToRole="Paciente" />
+          <NavigationProperty Name="Puesto" Relationship="NutribuddyModel.FK_Cita_Puesto" FromRole="Cita" ToRole="Puesto" />
+          <NavigationProperty Name="Trabajador" Relationship="NutribuddyModel.FK_Cita_TC" FromRole="Cita" ToRole="Trabajador" />
+        </EntityType>
+        <Association Name="FK_Cita_Centro">
+          <End Type="NutribuddyModel.Centro" Role="Centro" Multiplicity="1" />
+          <End Type="NutribuddyModel.Cita" Role="Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Centro">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="IDCentro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cita_Paciente">
+          <End Type="NutribuddyModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="NutribuddyModel.Cita" Role="Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="IDUsuario" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="IDPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cita_Puesto">
+          <End Type="NutribuddyModel.Puesto" Role="Puesto" Multiplicity="1" />
+          <End Type="NutribuddyModel.Cita" Role="Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puesto">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="IDTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cita_TC">
+          <End Type="NutribuddyModel.Trabajador" Role="Trabajador" Multiplicity="1" />
+          <End Type="NutribuddyModel.Cita" Role="Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trabajador">
+              <PropertyRef Name="IDUsuario" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="IDTrabajador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NutribuddyModelStoreContainer" CdmEntityContainer="NutribuddyEntities" >
+          <EntitySetMapping Name="Accion">
+            <EntityTypeMapping TypeName="NutribuddyModel.Accion">
+              <MappingFragment StoreEntitySet="Accion">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IDPadre" ColumnName="IDPadre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="NutribuddyModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol_Accion">
+            <EntityTypeMapping TypeName="NutribuddyModel.Rol_Accion">
+              <MappingFragment StoreEntitySet="Rol_Accion">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IDAccion" ColumnName="IDAccion" />
+                <ScalarProperty Name="IDRol" ColumnName="IDRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="NutribuddyModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="FechaCodigoRecuperacion" ColumnName="FechaCodigoRecuperacion" />
+                <ScalarProperty Name="CodigoRecuperacion" ColumnName="CodigoRecuperacion" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IDProvincia" ColumnName="IDProvincia" />
+                <ScalarProperty Name="FechaBaja" ColumnName="FechaBaja" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IDRol" ColumnName="IDRol" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComunidadAutonoma">
+            <EntityTypeMapping TypeName="NutribuddyModel.ComunidadAutonoma">
+              <MappingFragment StoreEntitySet="ComunidadAutonoma">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincia">
+            <EntityTypeMapping TypeName="NutribuddyModel.Provincia">
+              <MappingFragment StoreEntitySet="Provincia">
+                <ScalarProperty Name="IDCCAA" ColumnName="IDCCAA" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plan">
+            <EntityTypeMapping TypeName="NutribuddyModel.Plan">
+              <MappingFragment StoreEntitySet="Plan">
+                <ScalarProperty Name="MaxTrabajadores" ColumnName="MaxTrabajadores" />
+                <ScalarProperty Name="IDPlanSucesor" ColumnName="IDPlanSucesor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puesto">
+            <EntityTypeMapping TypeName="NutribuddyModel.Puesto">
+              <MappingFragment StoreEntitySet="Puesto">
+                <ScalarProperty Name="colorAgenda" ColumnName="colorAgenda" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacto">
+            <EntityTypeMapping TypeName="NutribuddyModel.Contacto">
+              <MappingFragment StoreEntitySet="Contacto">
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="EsCentro" ColumnName="EsCentro" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrabajadoresNB">
+            <EntityTypeMapping TypeName="NutribuddyModel.TrabajadoresNB">
+              <MappingFragment StoreEntitySet="TrabajadoresNB">
+                <ScalarProperty Name="FechaBaja" ColumnName="FechaBaja" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="NumSegSocial" ColumnName="NumSegSocial" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trabajador">
+            <EntityTypeMapping TypeName="NutribuddyModel.Trabajador">
+              <MappingFragment StoreEntitySet="Trabajador">
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="FechaBaja" ColumnName="FechaBaja" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="NumSegSocial" ColumnName="NumSegSocial" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CentroTrabajador">
+            <EntityTypeMapping TypeName="NutribuddyModel.CentroTrabajador">
+              <MappingFragment StoreEntitySet="CentroTrabajador">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IDCentro" ColumnName="IDCentro" />
+                <ScalarProperty Name="IDTrabajador" ColumnName="IDTrabajador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PuestoTrabajador">
+            <EntityTypeMapping TypeName="NutribuddyModel.PuestoTrabajador">
+              <MappingFragment StoreEntitySet="PuestoTrabajador">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IDCentro" ColumnName="IDCentro" />
+                <ScalarProperty Name="IDPuesto" ColumnName="IDPuesto" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Centro">
+            <EntityTypeMapping TypeName="NutribuddyModel.Centro">
+              <MappingFragment StoreEntitySet="Centro">
+                <ScalarProperty Name="TrabajadoresActuales" ColumnName="TrabajadoresActuales" />
+                <ScalarProperty Name="MaxTrabajadores" ColumnName="MaxTrabajadores" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="EsOnline" ColumnName="EsOnline" />
+                <ScalarProperty Name="EsPresencial" ColumnName="EsPresencial" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="MotivoBaja" ColumnName="MotivoBaja" />
+                <ScalarProperty Name="FechaBaja" ColumnName="FechaBaja" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="IDProvincia" ColumnName="IDProvincia" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="NombreCentro" ColumnName="NombreCentro" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+                <ScalarProperty Name="IDPlan" ColumnName="IDPlan" />
+                <ScalarProperty Name="IDUsuarioAdminitrador" ColumnName="IDUsuarioAdminitrador" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComidaTipo">
+            <EntityTypeMapping TypeName="NutribuddyModel.ComidaTipo">
+              <MappingFragment StoreEntitySet="ComidaTipo">
+                <ScalarProperty Name="NombreEN" ColumnName="NombreEN" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeporteTipo">
+            <EntityTypeMapping TypeName="NutribuddyModel.DeporteTipo">
+              <MappingFragment StoreEntitySet="DeporteTipo">
+                <ScalarProperty Name="NombreEN" ColumnName="NombreEN" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoAnimicoDiario">
+            <EntityTypeMapping TypeName="NutribuddyModel.EstadoAnimicoDiario">
+              <MappingFragment StoreEntitySet="EstadoAnimicoDiario">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IDEstadoAnimico" ColumnName="IDEstadoAnimico" />
+                <ScalarProperty Name="IDDiario" ColumnName="IDDiario" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoAnimicoTipo">
+            <EntityTypeMapping TypeName="NutribuddyModel.EstadoAnimicoTipo">
+              <MappingFragment StoreEntitySet="EstadoAnimicoTipo">
+                <ScalarProperty Name="NombreEN" ColumnName="NombreEN" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ObjetivoTipo">
+            <EntityTypeMapping TypeName="NutribuddyModel.ObjetivoTipo">
+              <MappingFragment StoreEntitySet="ObjetivoTipo">
+                <ScalarProperty Name="NombreEN" ColumnName="NombreEN" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OpcionesDiarioTipo">
+            <EntityTypeMapping TypeName="NutribuddyModel.OpcionesDiarioTipo">
+              <MappingFragment StoreEntitySet="OpcionesDiarioTipo">
+                <ScalarProperty Name="NombreEN" ColumnName="NombreEN" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paciente">
+            <EntityTypeMapping TypeName="NutribuddyModel.Paciente">
+              <MappingFragment StoreEntitySet="Paciente">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="TieneEstres" ColumnName="TieneEstres" />
+                <ScalarProperty Name="BajaAutoestima" ColumnName="BajaAutoestima" />
+                <ScalarProperty Name="IDObjetivo" ColumnName="IDObjetivo" />
+                <ScalarProperty Name="EsSedentario" ColumnName="EsSedentario" />
+                <ScalarProperty Name="FormularioInicial" ColumnName="FormularioInicial" />
+                <ScalarProperty Name="IDCentro" ColumnName="IDCentro" />
+                <ScalarProperty Name="EsHombre" ColumnName="EsHombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diario">
+            <EntityTypeMapping TypeName="NutribuddyModel.Diario">
+              <MappingFragment StoreEntitySet="Diario">
+                <ScalarProperty Name="IDMedidas" ColumnName="IDMedidas" />
+                <ScalarProperty Name="ObsDeporte" ColumnName="ObsDeporte" />
+                <ScalarProperty Name="Deporte" ColumnName="Deporte" />
+                <ScalarProperty Name="IDEstado" ColumnName="IDEstado" />
+                <ScalarProperty Name="IDSuenyo" ColumnName="IDSuenyo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Menstruaccion" ColumnName="Menstruaccion" />
+                <ScalarProperty Name="Medicamentos" ColumnName="Medicamentos" />
+                <ScalarProperty Name="AguaCantidad" ColumnName="AguaCantidad" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="IDPaciente" ColumnName="IDPaciente" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deporte">
+            <EntityTypeMapping TypeName="NutribuddyModel.Deporte">
+              <MappingFragment StoreEntitySet="Deporte">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IDTipoDeporte" ColumnName="IDTipoDeporte" />
+                <ScalarProperty Name="IDDiario" ColumnName="IDDiario" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comida">
+            <EntityTypeMapping TypeName="NutribuddyModel.Comida">
+              <MappingFragment StoreEntitySet="Comida">
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Alimentos" ColumnName="Alimentos" />
+                <ScalarProperty Name="IDTipoComida" ColumnName="IDTipoComida" />
+                <ScalarProperty Name="IDDiario" ColumnName="IDDiario" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PacienteMedidas">
+            <EntityTypeMapping TypeName="NutribuddyModel.PacienteMedidas">
+              <MappingFragment StoreEntitySet="PacienteMedidas">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="PAgua" ColumnName="PAgua" />
+                <ScalarProperty Name="PMagro" ColumnName="PMagro" />
+                <ScalarProperty Name="PGrasa" ColumnName="PGrasa" />
+                <ScalarProperty Name="CmCadera" ColumnName="CmCadera" />
+                <ScalarProperty Name="CmCintura" ColumnName="CmCintura" />
+                <ScalarProperty Name="CmPecho" ColumnName="CmPecho" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Altura" ColumnName="Altura" />
+                <ScalarProperty Name="IDPaciente" ColumnName="IDPaciente" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cita">
+            <EntityTypeMapping TypeName="NutribuddyModel.Cita">
+              <MappingFragment StoreEntitySet="Cita">
+                <ScalarProperty Name="Completada" ColumnName="Completada" />
+                <ScalarProperty Name="PautasPaciente" ColumnName="PautasPaciente" />
+                <ScalarProperty Name="NotasPrivadas" ColumnName="NotasPrivadas" />
+                <ScalarProperty Name="IDCentro" ColumnName="IDCentro" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="IDPaciente" ColumnName="IDPaciente" />
+                <ScalarProperty Name="IDTrabajador" ColumnName="IDTrabajador" />
+                <ScalarProperty Name="IDTipo" ColumnName="IDTipo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

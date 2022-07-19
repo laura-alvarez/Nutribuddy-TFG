@@ -1,0 +1,65 @@
+﻿@using NutriBuddy.Resources;
+@{
+    Layout = "~/Views/Shared/_LayoutPZ.cshtml";
+    var IDCita = int.Parse(ViewData["IDCita"].ToString());
+    var nombrePaciente = ViewData["nombrePaciente"].ToString();
+    var fechaCita = ViewData["fechaCita"].ToString();
+    var hayPrevia = ViewData["hayPrevia"] as bool?;
+
+    var previaFecha = ViewData["previaFecha"].ToString();
+    var previaTrabajador = ViewData["previaTrabajador"].ToString();
+    var previaNotasPrivadas = ViewData["previaNotasPrivadas"].ToString();
+    var previaPautas = ViewData["previaPautas"].ToString();
+}
+<script src="~/Scripts/nutribuddy/Cita.js"></script>
+<div style="width:100%">
+    <div id="datosCita" style=" display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: center;">
+        @if(hayPrevia != null && hayPrevia == true) { 
+        <button class="btnNB" id="verAnterior"><i class="fa-solid fa-eye" style="margin-right:2px"></i>@centros.agenda_2</button>
+        }
+        <input id="IDCita" class="hidden" value="@IDCita" readonly/>
+        <input id="NombrePaciente" style=" width: max-content; border: solid 2px #f3dc81; border-radius: 5px; font-weight: 800; padding: 0 1%;" value="@nombrePaciente" />
+        <input style="border: solid 2px #f3dc81; border-radius: 5px; width: max-content !important; padding: 0 1%; font-size: smaller; font-weight: 800;" id="FechaCita" value="@fechaCita"/>
+    </div>
+    <hr style="width:100%" />
+    <div id="comentariosTrabajador" style=" width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 3%;">
+        <div style="display: flex; flex-direction: row; width: 80%;"><label>@centros.agenda_5:</label></div>
+        <textarea id="comentarios" style="width: 80%; max-width: none; min-height: 250px; font-size: smaller; padding: 1%; border-radius: 15px; border: 2px solid #a3dd63;"></textarea>
+    </div>
+    <div id="paurasPaciente" style=" width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 3%;">
+        <div style="display: flex; flex-direction: row; width: 80%;">
+            <label>@centros.agenda_6:</label></div>
+            <textarea id="pautas" style="width: 80%; max-width: none; min-height: 250px; font-size: smaller; padding: 1%; border-radius: 15px; border: 2px solid #a3dd63; "></textarea>
+        </div>
+    <div style="width: 100%; margin-top: 3%; display: flex; flex-direction: row; align-items: center; justify-content: space-evenly;">
+        <button class="btnNB" id="volverCita"><i class="fa-solid fa-arrow-left-long" style="margin-right:2px"></i>@centros.agenda_3</button>
+        <button class="btnNB" id="terminarCita"><i class="fa-solid fa-floppy-disk" style="margin-right:2px"></i>@centros.agenda_4</button>
+    </div>
+</div>
+
+<div id="citaModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle2" class="modal-title" style="font-weight:800;">@centros.agenda_8 @previaFecha</h4>
+                <i class="fa-solid fa-xmark modalCloseBtn" data-dismiss="modal"></i>
+            </div>
+            <div id="anyadirCitaBody" class="modal-body">
+                <div style="margin-left: 10%;">
+                    <label>@centros.agenda_7:</label>
+                    <input id="trabajador" style="width: fit-content; font-size: smaller; padding: 1%; border-radius: 15px; border: 2px solid #a3dd63;" value="@previaTrabajador"/>
+                </div>
+                <div id="comentariosTrabajador" style=" width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 3%;">
+                    <div style="display: flex; flex-direction: row; width: 80%;"><label>@centros.agenda_5:</label></div>
+                    <textarea id="comentarios" style="width: 80%; max-width: none; min-height: 250px; font-size: smaller; padding: 1%; border-radius: 15px; border: 2px solid #a3dd63;" readonly>@previaNotasPrivadas</textarea>
+                </div>
+                <div id="paurasPaciente" style=" width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 3%;">
+                    <div style="display: flex; flex-direction: row; width: 80%;">
+                        <label>@centros.agenda_6:</label>
+                    </div>
+                    <textarea id="pautas" style="width: 80%; max-width: none; min-height: 250px; font-size: smaller; padding: 1%; border-radius: 15px; border: 2px solid #a3dd63; " readonly>@previaPautas</textarea>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>

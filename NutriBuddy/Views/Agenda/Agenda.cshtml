@@ -1,0 +1,107 @@
+﻿@using NutriBuddy.Models.Propios;
+@using NutriBuddy.Resources
+@{
+    Layout = "~/Views/Shared/_LayoutPZ.cshtml";
+    var puestos = ViewData["puestos"] as List<NutriBuddy.Models.Propios.Puesto>;
+    var trabajadores = ViewData["trabajadores"] as List<Basico>;
+}
+
+
+<link href="~/Content/Styles/Agenda.css" rel="stylesheet" />
+<link href="~/Content/Fullcalendar/main.css" rel="stylesheet" />
+<script src="~/Content/Fullcalendar/main.js"></script>
+<script src="~/Content/Fullcalendar/locales/es.js"></script>
+<script src="~/Scripts/nutribuddy/Agenda.js"></script>
+
+<div style="width:100%">    
+    <div class="anydirCitaDiv">
+        <button id="anyadirCita" class="btnNB"><i class="fa-solid fa-calendar-plus"></i>@centros.agenda_12</button>
+    </div>
+    <div id="calendario" ></div>
+    <h5 style=" margin-top: 1%; font-weight: 800; color: #33363a;">@centros.agenda_20</h5>
+    <div id="leyendaPersonal" style="display: flex; flex-direction: row; justify-content: space-between; margin: 2% 10%;">
+        @{foreach (NutriBuddy.Models.Propios.Puesto p in puestos)
+            {
+                <div style="display: flex; flex-direction: row; align-content: center; align-items: center;"><span style="background:@p.Color; border-radius:50px; padding:12px; margin-right: 4px;"></span><span style=" font-weight: 800; color: #33363a;">@p.Nombre</span></div>
+            }
+        }
+    </div>
+</div>
+
+<div id="calendarModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title"></h4>               
+            </div>
+            <div id="modalBody" class="modal-body"> </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="citaModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle2" class="modal-title">@centros.agenda_12</h4>
+                <i class="fa-solid fa-xmark modalCloseBtn" data-dismiss="modal"></i>
+            </div>
+            <div id="anyadirCitaBody" class="modal-body">
+                <div>
+                    <label>@centros.agenda_13: </label>
+                    <select id="TipoCita">
+                        <option value="-1">--</option>
+                        @{foreach (NutriBuddy.Models.Propios.Puesto p in puestos)
+                            {
+                                <option value="@p.IDPuesto">@p.Nombre</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div>
+                    <label>@centros.agenda_7:</label>
+                    <select id="CitaTrabajador">
+                        <option value="-1">--</option>
+                    </select>
+                </div>
+                <div>
+                    <label>@centros.agenda_14:</label>
+                    <select id="CitaPaciente">
+                        <option value="-1">--</option>
+                    </select>
+                </div>
+                <div>
+                    <label>@centros.agenda_15:</label>
+                    <input type="text" id="CitaTitulo" />
+                </div>
+                <div>
+                    <label>@centros.agenda_16:</label>
+                    <input id="CitaDia" type="date" min="@DateTime.UtcNow.ToString("yyyy-MM-dd")" />
+                </div>
+                <div>
+                    <label>@centros.agenda_17:</label>
+                    <input id="CitaHoraInicio" type="time"/>                   
+                </div>
+                <div>
+                    <label>@centros.agenda_18:</label>
+                    <input id="CitaHoraFin" type="time" />
+                </div>
+                <div>
+                    <label>@centros.agenda_19:</label>
+                    <textarea id="CitaObservaciones"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="comenzarCita" class="btnNB"><i class="fa-solid fa-play" style="margin-right:5px"></i>@centros.agenda_1</button>
+                <button id="eliminarCita" class="btnNB"><i class="fa-solid fa-trash-can" style="margin-right:5px"></i>@centros.agenda_9</button>
+                <button id="editarCita" class="btnNB"><i class="fa-solid fa-pencil" style="margin-right:5px"></i>@centros.agenda_10</button>
+                <button id="guardarCita" class="btnNB"><i class="fa-solid fa-floppy-disk" style="margin-right:5px"></i>@centros.agenda_11</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

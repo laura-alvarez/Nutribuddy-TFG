@@ -1,0 +1,39 @@
+﻿@using NutriBuddy.Resources;
+@{
+    Layout = "~/Views/Shared/_LayoutPZ.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/Styles/Centros.css" />
+
+
+<!--DATATABLE -->
+<link rel="stylesheet" href="~/Scripts/Datatable/datatables.min.css" />
+<link rel="stylesheet" href="~/Scripts/Datatable/responsive.dataTables.min.css" />
+<script type="text/javascript" src="~/Scripts/Datatable/datatables.min.js"></script>
+<script type="text/javascript" src="~/Scripts/Datatable/responsive.dataTables.min.js"></script>
+
+<link rel="stylesheet" href="~/Content/Styles/Tabla.css" />
+<script type="text/javascript" src="~/Scripts/nutribuddy/TablaNB.js"></script>
+<script type="text/javascript" src="~/Scripts/nutribuddy/GPacientes.js"></script>
+
+<div class="containerNB">
+    <div id="cabecera">
+        <h4 id="titulo">Listado de pacientes</h4>
+        <button id="anyadirPaciente" class="btnNB"><i class="fa-solid fa-user"></i>Añadir paciente</button>
+    </div>
+    <div id="divTabla">
+        <table id="tablaPacientes" class="table table-striped table-hover tablaDT">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>@centros.tablaNombre</th>
+                    <th>Prox. cita</th>
+                    <th>@centros.tablaEmail</th>
+                    <th>@centros.tablaTelefono</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>

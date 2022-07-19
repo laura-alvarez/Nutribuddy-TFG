@@ -1,0 +1,89 @@
+﻿
+@using NutriBuddy.Resources;
+@using System;
+@using NutriBuddy.Models;
+@{
+    var localizaciones = ViewData["localizaciones"] as Dictionary<string, List<ProvinciaBasica>>;
+    var puestos = ViewData["puestos"] as List<NutriBuddy.Models.Propios.Puesto>;
+    var trabajador = ViewData["trabajador"] as NutriBuddy.Models.Propios.TrabajadorCForm;
+
+}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+<script src="~/Scripts/nutribuddy/TrabajadorC.js"></script>
+
+
+<div class="formBlock">
+    <div>
+        <label>@trabajadores.form_Name*:</label>
+        <input id="NombreTC" type="text" value="@(trabajador != null?trabajador.Nombre:"")" />
+    </div>
+    <div>
+        <label>@trabajadores.form_Surname*:</label>
+        <input id="ApellidosTC" type="text" value="@(trabajador != null?trabajador.Apellidos:"")" />
+    </div>
+</div>
+<div class="formBlock">
+    <div>
+        <label>@trabajadores.form_Position*:</label>
+        <select class="js-example-basic-multiple" multiple="multiple" name="puestos[]" id="puestosTC" data-width="100%">
+            @{
+                foreach (NutriBuddy.Models.Propios.Puesto p in puestos)
+                {
+                    <option value="@p.IDPuesto" @(trabajador != null && trabajador.Puestos.Contains(p.IDPuesto) ? "selected" : "")>@p.Nombre</option>
+                }
+            }
+        </select>
+    </div>
+</div>
+<div class="formBlock">
+    <div>
+        <label>@trabajadores.form_SS*:</label>
+        <input id="SSR" type="text" value="@(trabajador != null?trabajador.SS:"")" />
+    </div>
+</div>
+<div class="formBlock">
+    <div>
+        <label>@trabajadores.form_DNI*:</label>
+        <input id="DNITC" type="text" value="@(trabajador != null?trabajador.DNI:"")" />
+    </div>
+    <div>
+        <label>@trabajadores.form_Nacionality*:</label>
+        <input id="NacionalidadTC" type="text" value="@(trabajador != null?trabajador.Nacionalidad:"")" />
+    </div>
+</div>
+<div class="formBlock">
+    <div>
+        <label>@trabajadores.form_State</label>
+        <select id="ProvinciaTC">
+            <option value="-1">--</option>
+            @{
+                foreach (KeyValuePair<string, List<ProvinciaBasica>> loc in localizaciones)
+                {
+                    <optgroup label="@loc.Key">
+                        @{
+                            foreach (ProvinciaBasica prov in loc.Value)
+                            {
+                                <option value="@prov.ID" @(trabajador != null && trabajador.IDProvincia == prov.ID ? "selected" : "")>@prov.Nombre</option>
+                            }
+                        }
+                    </optgroup>
+                }
+            }
+        </select>
+    </div>
+    <div>
+        <label>@trabajadores.form_Location*:</label>
+        <input id="LocalidadTC" type="text" value="@(trabajador != null?trabajador.Localidad:"")" />
+    </div>
+</div>
+<div class="formBlock">
+    <div>
+        <label>@trabajadores.form_Email*:</label>
+        <input id="EmailTC" type="text" value="@(trabajador != null?trabajador.Email:"")" />
+    </div>
+    <div>
+        <label>@trabajadores.form_Phone*:</label>
+        <input id="TelefonoTC" type="text" value="@(trabajador != null?trabajador.Telefono:"")" />
+    </div>
+</div>

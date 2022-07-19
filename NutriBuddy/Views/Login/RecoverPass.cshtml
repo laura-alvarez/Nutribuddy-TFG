@@ -1,0 +1,74 @@
+﻿@using NutriBuddy.Resources
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+    <link href="~/Content/Styles/Login.css" rel="stylesheet" />
+    <script>
+    //var msgGeneralError = @resource.msgGeneralError;
+    </script>
+    <script src="~/Scripts/nutribuddy/Validadores.js"></script>
+    <script src="~/Scripts/nutribuddy/RecoverPass.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;600;900&display=swap" rel="stylesheet">
+    <link href="~/Content/Fontawesome/css/all.css" rel="stylesheet">
+    <link href="~/Content/Fontawesome/css/solid.css" rel="stylesheet">
+
+    <!--SWEETALERT-->
+    @*<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>*@
+    <script src="~/Scripts/SweetAlert/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="~/Scripts/SweetAlert/sweetalert2.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="loginLogo">
+            <img src="/Content/Img/Logo/LogoNutriBuddyVertical.png">
+        </div>
+        <div class="login" style="display: flex; flex-direction: row; flex-wrap: wrap; align-content: center; justify-content: space-around;">
+            <form id="recoverPass" method="get" action="javascript:changePassword()">
+                <label>
+                    <b>
+                        @resource.login_email
+                    </b>
+                </label><br />
+                <label id="emailMsg">@resource.recP_EmailMsg</label>
+                <input type="text" class="inputRecover" name="Email" id="Email" placeholder="Email"><button class="inputRecoverBtn" id="SendCode"><i class="fa-solid fa-envelope"></i></button>
+                <br><br>
+                <div id="secondStep" class="hidden">
+                    <label>
+                        <b>
+                            @resource.recP_Code
+                        </b>
+                    </label><br />
+                    <label id="codeMsg">@resource.recP_CodeMsg</label>
+
+                    <input type="text" name="RecoverCode" id="RecoverCode" placeholder="@resource.recP_Code" class="RecoverCodeField">
+                    <br><br>
+                    <label>
+                        <b>
+                            @resource.recP_NewPass
+                        </b>
+                    </label>
+                    <input type="Password" name="Pass" id="Pass" class="RecoverCodeField" placeholder="@resource.recP_NewPass">
+                    <br>
+                    <label id="showPassword"><input type="checkbox" /> @resource.login_seePass</label>
+                    <br /><br />
+                    <button class="btnNB logBtn " type="submit" name="changePass" id="changePass">@resource.recP_ChangePass</button>
+                    <br /><br />
+                </div>
+                <button class="btnNB secBtn" type="button" name="comeBack" id="comeBack">@resource.recP_ComeBack</button>
+                <br />
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

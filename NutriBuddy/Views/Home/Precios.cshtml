@@ -1,0 +1,125 @@
+﻿@using NutriBuddy.Resources;
+@{
+
+    ViewBag.Title = resource.menu_pricing;
+}
+
+
+@*<div id="section-1">
+        <div class="principal-home-img">
+            <img src="~/Content/Img/principal-home-1.jpg" alt="Home image" />
+        </div>
+        <div class="principal-info">
+            <h1 style="font-family: 'Nunito', serif; font-weight: 800; font-size: 4rem; color: #34373a; text-shadow: 2px 2px 2px #b7b7b7; ">@resource.welcome</h1>
+            <p>@resource.welcome_p1</p>
+            <p>@resource.welcome_p2</p>
+            <h3 style="font-weight: 800; color: #34373a">@resource.welcome_p3</h3>
+            <p>@resource.welcome_p4</p>
+        </div>
+    </div>*@
+@*<div id="section-2-border-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f7dc7f" fill-opacity="1" d="M0,128L80,106.7C160,85,320,43,480,48C640,53,800,107,960,112C1120,117,1280,75,1360,53.3L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+    </div>*@
+<div id="section-2" style="margin-top: 0">
+    <div style="display: flex; flex-direction: column; align-content: center; justify-content: center; align-items: center; flex-wrap: nowrap;">
+        <h1 style="font-family: 'Nunito', serif; font-weight: 800; font-size: 4rem; color: #34373a; text-shadow: 2px 2px 2px #b7b7b7; ">@resource.home_section3_title</h1>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; flex-direction: row; align-content: center; padding: 2rem; width: 80%; ">
+            <div class="principal-card" style="background: rgb(0,87,161); background: linear-gradient(0deg, rgba(0,87,161,1) 0%, rgba(2,129,158,1) 32%, rgba(0,196,126,1) 67%); min-width: 175px !important;">
+                <h3 style="font-family: 'Nunito', serif; color: #34373a; font-weight: 800;">LITE</h3>
+                <div style="color: #34373a;width: 100%;border-top: 3px solid #34373a;padding-top: 1em;text-align: center;font-weight: 600;">@resource.home_section3_lite_resume</div>
+                <p style="font-weight: 800; font-size: larger; text-align: center; ">@resource.home_section3_lite_price</p>
+                <button class="btn btnNB" style="background: rgb(255,255,255);
+background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,196,126,1) 100%);color: #34373a;">
+                    @resource.home_section3_information
+                </button>
+            </div>
+            <div class="principal-card" style="background: rgb(144,161,0); background: linear-gradient(180deg, rgba(144,161,0,1) 0%, rgba(176,238,56,1) 32%, rgba(86,196,0,1) 67%); min-width: 175px !important;">
+                <h3 style="font-family: 'Nunito', serif; color: #34373a; font-weight: 800;/* border-bottom: 3px solid #34373a; *//* text-shadow: 2px 2px 2px #b7b7b7; */ ">PYME</h3>
+                <div style="/* background:black; */ color: #34373a;width: 100%;border-top: 3px solid #34373a;padding-top: 1em;text-align: center;font-weight: 600;">@resource.home_section3_pyme_resume</div>
+                <p style="font-weight: 800; font-size: larger; text-align: center; ">@resource.home_section3_pyme_price</p>
+                <button class="btn btnNB" style="/*background: white !important;*/ color: #34373a; /*border: 4px solid #34373a;*/ background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgb(151 178 13) 100%);">
+                    @resource.home_section3_information
+                </button>
+            </div>
+            <div class="principal-card" style="/* background: rgb(0,87,161); */
+    /* background: linear-gradient(0deg, rgba(0,87,161,1) 0%, rgba(2,129,158,1) 32%, rgba(0,196,126,1) 67%); */background: rgb(245,60,148);
+     background: linear-gradient(0deg, rgba(245,60,148,1) 0%, rgba(245,78,60,1) 27%, rgba(240,184,41,1) 100%);">
+                <h3 style="font-family: 'Nunito', serif; color: #34373a; font-weight: 800;/* border-bottom: 3px solid #34373a; *//* text-shadow: 2px 2px 2px #b7b7b7; */ ">PRO</h3>
+                <div style="/* background:black; */ color: #34373a;width: 100%;border-top: 3px solid #34373a;padding-top: 1em;text-align: center;font-weight: 600;">@resource.home_section3_pro_resume</div>
+                <p style="font-weight: 800; font-size: larger; text-align: center; ">@resource.home_section3_pro_price</p>
+                <button class="btn btnNB" style="/*background: white !important;*/ background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgb(242 138 49) 100%); color: #34373a; /*border: 4px solid #34373a;*/">
+                    @resource.home_section3_information
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+@*<div id="section-2-border-bottom">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#f7dc7f" fill-opacity="1" d="M0,64L80,64C160,64,320,64,480,58.7C640,53,800,43,960,64C1120,85,1280,139,1360,165.3L1440,192L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+        </svg>
+    </div>*@
+@*<div id="section-3">
+        <div class="principal-info">
+            <h1 style="font-family: 'Nunito', serif; font-weight: 800; font-size: 4rem; color: #34373a; text-shadow: 2px 2px 2px #b7b7b7; ">@resource.welcome_p5</h1>
+            <p>@resource.welcome_p6</p>
+            <p>@resource.welcome_p7</p>
+            <button id="btnRegistro" type="button" class="btn btnNB" style="width: fit-content; align-self: center; margin-top: 5%; padding-left: 2em; padding-right: 2em; z-index: 101; ">@resource.sign_in</button>
+        </div>
+        <div class="principal-home-img">
+            <img src="~/Content/Img/principal-home-2.jpg" alt="Home image" />
+        </div>
+    </div>*@
+@*<div id="section-4-border-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ff9f3c " fill-opacity="1" d="M0,192L80,192C160,192,320,192,480,170.7C640,149,800,107,960,101.3C1120,96,1280,128,1360,144L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+        </svg>
+    </div>*@
+@*<div id="section-4-border-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ffc181" fill-opacity="1" d="M0,128L60,154.7C120,181,240,235,360,240C480,245,600,203,720,197.3C840,192,960,224,1080,234.7C1200,245,1320,235,1380,229.3L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+        </svg>
+    </div>*@
+<div id="section-4" style="margin-top: 0">
+    <h1 style="font-family: 'Nunito', serif; font-weight: 800; font-size: 4rem; color: #34373a; text-shadow: 2px 2px 2px #b7b7b7; ">Contacta con nosotros</h1>
+    <p class="pImportant">Si tienes alguna duda o deseas más información contáctanos y en breve un agente se pondrá en contacto contigo.</p>
+    <div style="width: 50%; background:#fff;padding: 1rem; border-radius: 25px; box-shadow: 3px 3px 7px 3px #34373a; display: flex; flex-direction: row; align-content: center; justify-content: center;">
+        <img alt="Formulario de contacto" src="~/Content/Img/contact.png" style="margin-top: 7rem; width: auto; height: fit-content; " />
+
+        <form style="padding: 1rem; width: 40%; font-size: larger; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: space-around; align-items: flex-start; align-content: center; margin-left: 3rem;"
+              action="javascript:formularioContacto()">
+            <h6>Los campos marcados con * son obligatorios</h6>
+            <div style="display: flex; flex-direction: column; margin-bottom: 0.5rem; width: 100%">
+                <label for="Nombre" style="font-weight: 600;">@forms.form_name*</label>
+                <input type="text" id="contactoNombre" style="font-size: medium;" required oninvalid="!this.value || this.setCustomValidity('@forms.form_fieldRequiredMsg')" />
+            </div>
+            <div style="display: flex; flex-direction: column; margin-bottom: 0.5rem; width: 100%">
+                <label for="Tipo" style="font-weight: 600;">@forms.form_centerOrPatiente*</label>
+                <div>
+                    <input type="radio" id="Centro" name="QuienContacta" value="Centro" style="accent-color: #f2233a; transform: scale(1.25); margin-right: 0.25rem;" checked>
+                    <label for="Centro">@forms.form_rb_center</label>
+                </div>
+                <div>
+                    <input type="radio" id="Paciente" name="QuienContacta" value="Paciente" style="accent-color: #f2233a; transform: scale(1.25); margin-right: 0.25rem;">
+                    <label for="Paciente">@forms.form_rb_patient</label>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; margin-bottom: 0.5rem; width: 100%">
+                <label for="Email" style="font-weight: 600;">@forms.form_email*</label>
+                <input type="email" id="contactoEmail" style="font-size: medium;" required oninvalid="!this.value || this.setCustomValidity('@forms.form_fieldRequiredMsg')" />
+            </div>
+            <div style="display: flex; flex-direction: column; margin-bottom: 0.5rem; width: 100%">
+                <label for="Telefono" style="font-weight: 600;">@forms.form_phone</label>
+                <input type="tel" id="contactoTelefono" style="font-size: medium;" />
+            </div>
+            <div style="display: flex; flex-direction: column; margin-bottom: 0.5rem; width:100%">
+                <label for="Comentario" style="font-weight: 600;">@forms.form_comment*</label>
+                <textarea id="contactoComentario" style="height: 150px; font-size: medium; padding: 0.5rem;" required oninvalid="!this.value || this.setCustomValidity('@forms.form_fieldRequiredMsg')"></textarea>
+            </div>
+            <button class="btn btnNB" type="submit" style="margin-top: 1rem; padding: 0.75rem 3rem;">@forms.form_btn_send</button>
+        </form>
+    </div>
+
+</div>
+

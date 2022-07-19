@@ -1,0 +1,59 @@
+﻿@using NutriBuddy.Resources
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+    <link href="~/Content/Styles/Login.css" rel="stylesheet" />
+    <script>
+    //var msgGeneralError = @resource.msgGeneralError;
+    </script>
+    <script src="~/Scripts/nutribuddy/Login.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;600;900&display=swap" rel="stylesheet">
+
+    <!--SWEETALERT-->
+    @*<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>*@
+    <script src="~/Scripts/SweetAlert/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="~/Scripts/SweetAlert/sweetalert2.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="loginLogo">
+            <img src="/Content/Img/Logo/LogoNutriBuddyVertical.png">
+        </div>
+        <div class="login">
+
+            <form id="login" method="get" action="javascript:doLogin()">
+                <label>
+                    <b>
+                        @resource.login_email
+                    </b>
+                </label>
+                <input type="text" name="Email" id="Email" placeholder="Email" class="Pass">
+                <br><br>
+                <input type="hidden" id="ipfield" />
+                <label>
+                    <b>
+                        @resource.login_pass
+                    </b>
+                </label>
+                <input type="Password" name="Pass" id="Pass" class="Pass" placeholder="@resource.login_pass">
+                <label id="showPassword"><input type="checkbox" /> @resource.login_seePass</label><br /><br />
+                <button class="btnNB logBtn " type="submit" name="log" id="logIn">@resource.login_btn_login</button>
+                <br /><br />
+                <button class="btnNB secBtn" type="button" name="forgotPassword" id="forgotPassword">@resource.login_btn_recoverPass</button>
+                <br />
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

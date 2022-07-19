@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5fcf788b040f4395872ba19f4e660cb2" Name="Diagram1" ZoomLevel="85" >
+        <EntityTypeShape EntityType="NutribuddyModel.Accion" Width="1.5" PointX="2.875" PointY="4" />
+        <EntityTypeShape EntityType="NutribuddyModel.Rol" Width="1.5" PointX="0.5" PointY="3" />
+        <EntityTypeShape EntityType="NutribuddyModel.Rol_Accion" Width="1.5" PointX="2.875" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutribuddyModel.Usuario" Width="1.5" PointX="0.625" PointY="5.75" />
+        <AssociationConnector Association="NutribuddyModel.FK_Acciones_Acciones" />
+        <AssociationConnector Association="NutribuddyModel.FK_RA_Accion" />
+        <AssociationConnector Association="NutribuddyModel.FK_RA_Rol" />
+        <AssociationConnector Association="NutribuddyModel.FK_Usuario_Rol" />
+        <EntityTypeShape EntityType="NutribuddyModel.ComunidadAutonoma" Width="1.5" PointX="2.875" PointY="0.625" />
+        <EntityTypeShape EntityType="NutribuddyModel.Provincia" Width="1.5" PointX="5" PointY="0.5" />
+        <AssociationConnector Association="NutribuddyModel.FK_Provincias_ComunidadAutonoma" />
+        <AssociationConnector Association="NutribuddyModel.FK_Usuario_Provincia" />
+        <EntityTypeShape EntityType="NutribuddyModel.Plan" Width="1.5" PointX="5.375" PointY="2.625" />
+        <EntityTypeShape EntityType="NutribuddyModel.Puesto" Width="1.5" PointX="5.125" PointY="9.125" />
+        <EntityTypeShape EntityType="NutribuddyModel.Contacto" Width="1.5" PointX="0.75" PointY="0.5" />
+        <EntityTypeShape EntityType="NutribuddyModel.TrabajadoresNB" Width="1.5" PointX="2.875" PointY="6.75" />
+        <AssociationConnector Association="NutribuddyModel.FK_TrabajadoresNB_Usuario" />
+        <EntityTypeShape EntityType="NutribuddyModel.Trabajador" Width="1.5" PointX="0.75" PointY="9.5" />
+        <AssociationConnector Association="NutribuddyModel.FK_Trabajador_Usuario" />
+        <EntityTypeShape EntityType="NutribuddyModel.CentroTrabajador" Width="1.75" PointX="2.75" PointY="9.5" />
+        <AssociationConnector Association="NutribuddyModel.FK_CT_Trabajador" />
+        <EntityTypeShape EntityType="NutribuddyModel.PuestoTrabajador" Width="1.5" PointX="5.125" PointY="6.625" />
+        <AssociationConnector Association="NutribuddyModel.FK_PT_Puestos" />
+        <AssociationConnector Association="NutribuddyModel.FK_PT_Usuario" />
+        <EntityTypeShape EntityType="NutribuddyModel.Centro" Width="1.5" PointX="7.25" PointY="0.5" />
+        <AssociationConnector Association="NutribuddyModel.FK_Centro_Plan" />
+        <AssociationConnector Association="NutribuddyModel.FK_Centro_Provincia" />
+        <AssociationConnector Association="NutribuddyModel.FK_Centro_Usuario" />
+        <AssociationConnector Association="NutribuddyModel.FK_CT_Centro" />
+        <AssociationConnector Association="NutribuddyModel.FK_PT_Centro" />
+        <EntityTypeShape EntityType="NutribuddyModel.ComidaTipo" Width="1.5" PointX="4.125" PointY="12.875" />
+        <EntityTypeShape EntityType="NutribuddyModel.DeporteTipo" Width="1.5" PointX="0.5" PointY="14.5" />
+        <EntityTypeShape EntityType="NutribuddyModel.EstadoAnimicoDiario" Width="1.875" PointX="10.25" PointY="10.625" />
+        <EntityTypeShape EntityType="NutribuddyModel.EstadoAnimicoTipo" Width="2" PointX="10.25" PointY="8.75" />
+        <AssociationConnector Association="NutribuddyModel.FK_EAD_EA" />
+        <EntityTypeShape EntityType="NutribuddyModel.ObjetivoTipo" Width="1.5" PointX="11.375" PointY="0.5" />
+        <EntityTypeShape EntityType="NutribuddyModel.OpcionesDiarioTipo" Width="1.875" PointX="0.625" PointY="12.625" />
+        <EntityTypeShape EntityType="NutribuddyModel.Paciente" Width="1.5" PointX="9.5" PointY="0.5" />
+        <AssociationConnector Association="NutribuddyModel.FK_Paciente_Centro" />
+        <AssociationConnector Association="NutribuddyModel.FK_Paciente_ObjetivoTipo" />
+        <AssociationConnector Association="NutribuddyModel.FK_Paciente_Usuario" />
+        <EntityTypeShape EntityType="NutribuddyModel.Diario" Width="1.5" PointX="8.75" PointY="12.5" />
+        <AssociationConnector Association="NutribuddyModel.FK_Diario_OpDiario1" />
+        <AssociationConnector Association="NutribuddyModel.FK_Diario_OpDiario2" />
+        <AssociationConnector Association="NutribuddyModel.FK_Diario_Paciente" />
+        <AssociationConnector Association="NutribuddyModel.FK_EAD_Diario" />
+        <EntityTypeShape EntityType="NutribuddyModel.Deporte" Width="1.5" PointX="2.5" PointY="14.5" />
+        <AssociationConnector Association="NutribuddyModel.FK_Deporte_Diario" />
+        <AssociationConnector Association="NutribuddyModel.FK_Deporte_DTipo" />
+        <EntityTypeShape EntityType="NutribuddyModel.Comida" Width="1.5" PointX="6.375" PointY="12.75" />
+        <AssociationConnector Association="NutribuddyModel.FK_Comida_Diario" />
+        <AssociationConnector Association="NutribuddyModel.FK_Comida_TipoComida" />
+        <EntityTypeShape EntityType="NutribuddyModel.PacienteMedidas" Width="1.75" PointX="9.5" PointY="5" />
+        <AssociationConnector Association="NutribuddyModel.FK_Diario_Medidas" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="NutribuddyModel.FK_Paciente_PacienteMedidas" />
+        <EntityTypeShape EntityType="NutribuddyModel.Cita" Width="1.5" PointX="7.5" PointY="8" />
+        <AssociationConnector Association="NutribuddyModel.FK_Cita_Centro" />
+        <AssociationConnector Association="NutribuddyModel.FK_Cita_Paciente" />
+        <AssociationConnector Association="NutribuddyModel.FK_Cita_Puesto" />
+        <AssociationConnector Association="NutribuddyModel.FK_Cita_TC" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

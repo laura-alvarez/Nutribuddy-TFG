@@ -1,0 +1,33 @@
+﻿#recordatorioCita {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    #recordatorioCita p {
+        background: #ffc181;
+        color: #33363a;
+        width: 75%;
+        padding: 1% 2%;
+        text-align: center;
+        font-weight: 800;
+        border-radius: 50px;
+    }
+
+#tituloMes {
+    font-size: xxx-large;
+    font-weight: 600;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contenidoMes {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
